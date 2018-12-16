@@ -1,0 +1,767 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Inc",
+				"include"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "build.sh",
+			"settings":
+			{
+				"buffer_size": 413,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 2923,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "round_table.sublime-project",
+			"settings":
+			{
+				"buffer_size": 200,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/drabard/code/demo_framework/demo/src/demo.h",
+			"settings":
+			{
+				"buffer_size": 1346,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/drabard/code/demo_framework/demo/src/demo.cpp",
+			"settings":
+			{
+				"buffer_size": 7642,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Script",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Script",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Script",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Cla",
+				"Clang Format: Format Selection"
+			],
+			[
+				"Clang",
+				"Clang Format: Format Selection"
+			],
+			[
+				"Clan",
+				"Clang Format: Format Selection"
+			],
+			[
+				"Format S",
+				"Clang Format: Format Selection"
+			],
+			[
+				"Format",
+				"Clang Format: Format Selection"
+			],
+			[
+				"View",
+				"View: Toggle Menu"
+			]
+		],
+		"width": 497.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/drabard/code/round_table"
+	],
+	"file_history":
+	[
+		"/home/drabard/code/demo_framework/build_demo.sh",
+		"/home/drabard/code/demo_framework/demo/src/main.cpp",
+		"/home/drabard/code/round_table/src/main.c",
+		"/home/drabard/code/round_table/deps/imgui-1.65/imgui_impl_opengl3.h",
+		"/home/drabard/code/game00/build.sh",
+		"/home/drabard/code/round_table/.gitignore",
+		"/home/drabard/code/round_table/src/main.cpp",
+		"/home/drabard/code/project_euler/16/16.py",
+		"/home/drabard/code/project_euler/16/16.c",
+		"/home/drabard/code/project_euler/17/17.py",
+		"/home/drabard/code/project_euler/problem_15.py",
+		"/home/drabard/knowledge/org",
+		"/home/drabard/notes/fitness.md",
+		"/home/drabard/projects/context_steering_demo/build.sh",
+		"/home/drabard/projects/context_steering_demo/context_steering_demo.sublime-project",
+		"/home/drabard/projects/context_steering_demo/src/math.c",
+		"/home/drabard/notes/project_ideas.md",
+		"/home/drabard/notes/projects.md",
+		"/home/drabard/notes/majhima_nikaya_lectures/mn2.md",
+		"/home/drabard/notes/majhima_nikaya_lectures/mn6.md",
+		"/home/drabard/notes/majhima_nikaya_lectures/mn7.md",
+		"/home/drabard/Dokumenty/suttas",
+		"/home/drabard/notes/majhima_nikaya_lectures.md",
+		"/home/drabard/notes/meditation.md",
+		"/home/drabard/notes/majhima_nikaya_lectures/mn118md",
+		"/home/drabard/notes/majhima_nikaya_lectures/mn10.md",
+		"/home/drabard/code/game00/notes",
+		"/home/drabard/code/game00/src/resources_storage.c.tmpl",
+		"/home/drabard/code/game00/src/resources.h",
+		"/home/drabard/code/game00/src/resources_storage.c",
+		"/home/drabard/code/game00/src/graphics_storage.c",
+		"/home/drabard/code/game00/src/graphics.h",
+		"/home/drabard/code/game00/src/resources_storage.h",
+		"/home/drabard/code/game00/src/string_id.h",
+		"/home/drabard/code/game00/src/string_id.c",
+		"/home/drabard/code/game00/src/game_flow.inl",
+		"/home/drabard/code/game00/src/graphics_storage.h",
+		"/home/drabard/projects/stuff/content/posts/test-post.md",
+		"/home/drabard/code/game00/src/game_state.inl",
+		"/home/drabard/code/game00/src/hashmap.c",
+		"/home/drabard/code/game00/compile_template.sh",
+		"/home/drabard/code/game00/compile_all_templates.sh",
+		"/home/drabard/code/game00/src/resources.c",
+		"/home/drabard/code/game00/src/game.c",
+		"/home/drabard/code/game00/src/scene.h",
+		"/home/drabard/code/game00/src/entity.h",
+		"/home/drabard/code/game00/src/graphics_storage.c.tmpl",
+		"/home/drabard/code/game00/src/graphics.c",
+		"/home/drabard/code/game00/src/gpu.h",
+		"/home/drabard/code/game00/src/freelist.h",
+		"/home/drabard/code/game00/src/main.c",
+		"/home/drabard/code/game00/src/hashmap.h",
+		"/home/drabard/code/game00/src/freelist.c",
+		"/home/drabard/code/game00/ext/SDL2/include/SDL2/SDL_config.h",
+		"/home/drabard/code/game00/compile_templates.sh",
+		"/home/drabard/code/game00/count_lines.sh",
+		"/home/drabard/code/game00/src/untitled",
+		"/home/drabard/code/game00/src/entity.c",
+		"/home/drabard/code/game00/src/file.c",
+		"/home/drabard/code/game00/src/: The Five Hindrances",
+		"/home/drabard/code/codegen/cheetah_test.tmpl",
+		"/home/drabard/games/reigns",
+		"/home/drabard/code/codegen/example.c",
+		"/home/drabard/code/game00/game00.sublime-project"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"gui_",
+			"win.",
+			"gui_init",
+			"false"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"window."
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "build.sh",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/ShellScript/Bash.sublime-syntax",
+							"tab_size": 6,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2923,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2110,
+								2110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1262.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "round_table.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 200,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								200,
+								200
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/drabard/code/demo_framework/demo/src/demo.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1346,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								94,
+								94
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 18.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/drabard/code/demo_framework/demo/src/demo.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7642,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3794,
+								3794
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2718.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 126.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "round_table.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main.cpp",
+				"src/main.cpp"
+			],
+			[
+				"demo.h",
+				"deps/imgui-1.65/imgui_impl_opengl3.h"
+			],
+			[
+				"main.c",
+				"src/main.c"
+			],
+			[
+				"bui\t",
+				"build.sh"
+			],
+			[
+				"build.sh",
+				"build.sh"
+			],
+			[
+				"math.c",
+				"src/math.c"
+			],
+			[
+				"math.h",
+				"src/math.h"
+			],
+			[
+				"not",
+				"notes"
+			],
+			[
+				"game_flow",
+				"src/game_flow.inl"
+			],
+			[
+				"string_id",
+				"src/string_id.c"
+			],
+			[
+				"string_id.h",
+				"src/string_id.h"
+			],
+			[
+				"reosur",
+				"src/resources_storage.h"
+			],
+			[
+				"resou",
+				"src/resources_storage.c.tmpl"
+			],
+			[
+				"resources_storage.c",
+				"src/resources_storage.c"
+			],
+			[
+				"rs",
+				"src/resources_storage.h"
+			],
+			[
+				"graphics_storage.c",
+				"src/graphics_storage.c"
+			],
+			[
+				"graphics_storage.h",
+				"src/graphics_storage.h"
+			],
+			[
+				"resources",
+				"src/resources.h"
+			],
+			[
+				"resources_storage",
+				"src/resources_storage.c"
+			],
+			[
+				"resources_stora",
+				"src/resources_storage.c"
+			],
+			[
+				"resources_storage.h",
+				"src/resources_storage.h"
+			],
+			[
+				"resources_storage.tmpl",
+				"src/resources_storage.c.tmpl"
+			],
+			[
+				"notes",
+				"notes"
+			],
+			[
+				"game_flow.inl",
+				"src/game_flow.inl"
+			],
+			[
+				"resources_storage.c.tmpl",
+				"src/resources_storage.c.tmpl"
+			],
+			[
+				"game_state.",
+				"src/game_state.inl"
+			],
+			[
+				"graphics.h",
+				"src/graphics.h"
+			],
+			[
+				"graphics_stora",
+				"src/graphics_storage.c.tmpl"
+			],
+			[
+				"graphics_storage.c.tmpl",
+				"src/graphics_storage.c.tmpl"
+			],
+			[
+				"graphics.c",
+				"src/graphics.c"
+			],
+			[
+				"gpu.h",
+				"src/gpu.h"
+			],
+			[
+				"graphics_sto",
+				"src/graphics_storage.h"
+			],
+			[
+				"graphics_storage",
+				"src/graphics_storage.c.tmpl"
+			],
+			[
+				"graphics",
+				"src/graphics_storage.h"
+			],
+			[
+				"scene.h",
+				"src/scene.h"
+			],
+			[
+				"entity.h",
+				"src/entity.h"
+			],
+			[
+				"graphics_",
+				"src/graphics_storage.h"
+			],
+			[
+				"resources.",
+				"src/resources_storage.c.tmpl"
+			],
+			[
+				"hashmap.h",
+				"src/hashmap.h"
+			],
+			[
+				"resources_s",
+				"src/resources_storage.c.tmpl"
+			],
+			[
+				"resource_storage.c.tmpl",
+				"src/resources_storage.c.tmpl"
+			],
+			[
+				"game_State",
+				"src/game_state.inl"
+			],
+			[
+				"resources.c",
+				"src/resources.c"
+			],
+			[
+				"freelist",
+				"src/freelist.c"
+			],
+			[
+				"freelist.h",
+				"src/freelist.h"
+			],
+			[
+				"res",
+				"src/resources_storage.c"
+			],
+			[
+				"",
+				"src/resources_storage.c.tmpl"
+			],
+			[
+				"hashmap.c",
+				"src/hashmap.c"
+			],
+			[
+				"game_flo",
+				"src/game_flow.inl"
+			],
+			[
+				"hash",
+				"src/hashmap.h"
+			],
+			[
+				"resources.h",
+				"src/resources.h"
+			],
+			[
+				"game.c",
+				"src/game.c"
+			],
+			[
+				"freelist.c",
+				"src/freelist.c"
+			],
+			[
+				"compile",
+				"compile_all_templates.sh"
+			],
+			[
+				"compile_template",
+				"compile_template.sh"
+			],
+			[
+				"compile_",
+				"compile_all_templates.sh"
+			],
+			[
+				"resources_",
+				"src/resources_storage.c.tmpl"
+			],
+			[
+				"compile_all",
+				"compile_all_templates.sh"
+			],
+			[
+				"resour",
+				"src/resources_storage.c"
+			],
+			[
+				"compile_tem\t",
+				"compile_template.sh"
+			],
+			[
+				"graphics.",
+				"src/graphics.h"
+			],
+			[
+				"file.c",
+				"src/file.c"
+			],
+			[
+				"game_state",
+				"src/game_state.inl"
+			],
+			[
+				"game_state.inl",
+				"src/game_state.inl"
+			],
+			[
+				"string_id.c",
+				"src/string_id.c"
+			],
+			[
+				"resourcesh",
+				"src/resources.h"
+			],
+			[
+				"game_fl",
+				"src/game_flow.inl"
+			],
+			[
+				"codegen",
+				"~/code/codegen/example.c"
+			],
+			[
+				"resource",
+				"src/resources_storage.h"
+			],
+			[
+				"resoures_storage.h",
+				"src/resources_storage.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "size_t",
+		"selected_items":
+		[
+			[
+				"size_t",
+				"size_t"
+			],
+			[
+				"gfx_mesh_create",
+				"gfx_mesh_create"
+			]
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 320.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,15 @@
+{
+    "build_systems":
+    [
+        {
+            "name": "Script",
+            "shell_cmd": "pushd ${project_path} && ./build.sh && popd"
+        }
+    ],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}
