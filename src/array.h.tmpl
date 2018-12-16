@@ -1,0 +1,30 @@
+#include "src/array.tdef"
+// This file is generated.
+\#pragma once
+
+\#include <stddef.h>
+
+typedef void* (*array_alloc_t)(size_t);
+typedef void* (*array_realloc_t)(void*, size_t);
+typedef void* (*array_free_t)(void*);
+
+void array_set_alloc(array_alloc_t, array_realloc_t, array_free_t);
+
+#for $type in $types
+struct array_$(type.name)
+{
+	$(type.full_name)* buffer;
+	uint32_t size;
+	uint32_t capacity;
+
+	$(type.full_name)& operator[](uint32_t idx);
+};
+
+void array_$(type.name)_create(struct array_$(type.name)* array);
+void array_$(type.name)_destroy(struct array_$(type.name)* array);
+void array_$(type.name)_change_capacity(struct array_$(type.name)* array, uint32_t new_size);
+void array_$(type.name)_resize(struct array_$(type.name)* array, uint32_t new_size);
+void array_$(type.name)_push_back(struct array_$(type.name)* array, #if $type.by_value then $type.full_name else $type.full_name + '*' # element);
+void array_$(type.name)_remove(struct array_$(type.name)* array, uint32_t index);
+
+#end for

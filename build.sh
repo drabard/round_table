@@ -7,6 +7,7 @@ clang++-3.9 -g -Wall -Werror -I../src \
       src/main.cpp \
       src/window.cpp \
       src/gui.cpp \
+      src/scene.cpp \
       deps/drb_graphics/lib/libdrb_graphics.a \
       deps/glfw-3.2.1/lib/libglfw3.a \
       deps/imgui-1.65/imgui.a \

@@ -12,46 +12,65 @@
 	"buffers":
 	[
 		{
-			"file": "build.sh",
+			"file": "src/array.h.tmpl",
 			"settings":
 			{
-				"buffer_size": 413,
+				"buffer_size": 677,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main.cpp",
+			"file": "src/array.tdef",
 			"settings":
 			{
-				"buffer_size": 2923,
+				"buffer_size": 147,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "round_table.sublime-project",
+			"file": "src/array.cpp.tmpl",
 			"settings":
 			{
-				"buffer_size": 200,
+				"buffer_size": 796,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/drabard/code/demo_framework/demo/src/demo.h",
+			"file": "src/array.cpp",
 			"settings":
 			{
-				"buffer_size": 1346,
-				"encoding": "UTF-8",
+				"buffer_size": 5752,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/drabard/code/demo_framework/demo/src/demo.cpp",
+			"file": "/home/drabard/code/game00/src/resources_storage.c.tmpl",
 			"settings":
 			{
-				"buffer_size": 7642,
+				"buffer_size": 3744,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "#pragma once\n\n#include \"gpu.h\"\n#include \"math.h\"\n\n// todo remove this dependency\n// resources should be managed by the user, and only already uploaded gpu\n// stuff should be used here.\n#include \"resources.h\"\n\ntypedef void (*gfx_log_fptr)(const char*, ...);\nvoid gfx_set_log(gfx_log_fptr l);\n\nextern gfx_log_fptr gfx_text_log;\n7\ntypedef void* (*gfx_malloc_fptr)(size_t);\ntypedef void (*gfx_free_fptr)(void*);\ntypedef void* (*gfx_realloc_fptr)(void*, size_t);\nvoid gfx_set_mem(gfx_malloc_fptr m, gfx_free_fptr f, gfx_realloc_fptr r);\n\nextern gfx_malloc_fptr gfx_malloc;\nextern gfx_free_fptr gfx_free;\nextern gfx_realloc_fptr gfx_realloc;\n\nenum gfx_status { GFX_OK = 0,\n                  GFX_FAILURE };\n\nenum gfx_status gfx_init(uint32_t screen_size[2]);\n\n// ---- Shaders ---------------------------\n\nenum gfx_shader_type {\n    GFX_VERTEX_SHADER = GPU_VERTEX_SHADER,\n    GFX_FRAGMENT_SHADER = GPU_FRAGMENT_SHADER\n};\n\nstruct gfx_shader {\n    const char* name;\n    enum gfx_shader_type type;\n    gpu_shader shader;\n};\n\nstruct gfx_program {\n    const char* name;\n    gpu_program program;\n};\n\nenum gfx_status gfx_activate_program(struct gfx_program* program);\n\n// ---- Perspective and view ----\n\nenum gfx_status gfx_update_view(const m4* view, struct gfx_program* program);\nenum gfx_status gfx_update_projection(const m4* projection, struct gfx_program* program);\n\n// ---- Mesh ----\n\nstruct gfx_mesh\n{\n  struct gpu_vertex_buffer vertex_buffer;\n  struct gpu_texture* textures; // owned\n  uint32_t ntextures;\n};\n\nenum gfx_status gfx_mesh_create(struct gfx_mesh* mesh, const struct rsrc_mesh* resource, const struct rsrc_texture* tex_rsrcs, uint32_t ntextures);\n\nvoid gfx_mesh_destroy(struct gfx_mesh* mesh);\n\nenum gfx_status gfx_mesh_draw(struct gfx_mesh* mesh, const struct gfx_program* active_program, const m4* transforms, uint32_t ntransforms);\n\n// ---- Font ----\n\nstruct gfx_font\n{\n  struct gpu_texture texture;\n  const struct rsrc_font* resource; // not owned\n};\n\nenum gfx_status gfx_font_create(struct gfx_font* fnt, const struct rsrc_font* rsrc);\n\nvoid gfx_font_destroy(struct gfx_font* fnt);\n\n// ---- Text ----\n\nstruct gfx_text\n{\n  const char* text_ansi; // not owned\n  struct gfx_font* font; // not owned\n  struct gpu_vertex_buffer quads;\n};\n\nenum gfx_status gfx_text_create(struct gfx_text* txt, const char* text_ansi, struct gfx_font* font );\n\nvoid gfx_text_destroy(struct gfx_text* txt);\n\nenum gfx_status gfx_text_draw(struct gfx_text* txt, const struct gfx_program* active_program, float screen_x, float screen_y);",
+			"file": "/home/drabard/code/game00/src/graphics.h",
+			"file_size": 2518,
+			"file_write_time": 131736129281421203,
+			"settings":
+			{
+				"buffer_size": 2519,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/array.h",
+			"settings":
+			{
+				"buffer_size": 4366,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -136,13 +155,33 @@
 	],
 	"file_history":
 	[
+		"/home/drabard/code/demo_framework/src/graphics.c",
+		"/home/drabard/code/demo_framework/include/drb_graphics.h",
+		"/home/drabard/code/round_table/build.sh",
+		"/home/drabard/code/round_table/src/array.tdef",
+		"/home/drabard/code/demo_framework/src/graphics.h",
+		"/home/drabard/code/demo_framework/demo/src/array.cpp.tmpl",
+		"/home/drabard/code/game00/src/resources_storage.c.tmpl",
+		"/home/drabard/code/round_table/src/array.h",
+		"/home/drabard/code/demo_framework/demo/src/array.h.tmpl",
+		"/home/drabard/code/demo_framework/demo/src/demo.cpp",
+		"/home/drabard/code/demo_framework/demo/src/demo.h",
+		"/home/drabard/code/round_table/round_table.sublime-project",
+		"/home/drabard/code/round_table/src/window.cpp",
+		"/home/drabard/code/round_table/src/window.h",
+		"/home/drabard/code/round_table/src/gui.cpp",
+		"/home/drabard/code/round_table/src/gui.h",
+		"/home/drabard/code/round_table/src/main.cpp",
+		"/home/drabard/code/round_table/src/scene.h",
+		"/home/drabard/code/round_table/src/scene.cpp",
+		"/home/drabard/code/round_table/src/array.h.tmpl",
+		"/home/drabard/code/round_table/src/array.cpp.tmpl",
 		"/home/drabard/code/demo_framework/build_demo.sh",
 		"/home/drabard/code/demo_framework/demo/src/main.cpp",
 		"/home/drabard/code/round_table/src/main.c",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui_impl_opengl3.h",
 		"/home/drabard/code/game00/build.sh",
 		"/home/drabard/code/round_table/.gitignore",
-		"/home/drabard/code/round_table/src/main.cpp",
 		"/home/drabard/code/project_euler/16/16.py",
 		"/home/drabard/code/project_euler/16/16.c",
 		"/home/drabard/code/project_euler/17/17.py",
@@ -163,7 +202,6 @@
 		"/home/drabard/notes/majhima_nikaya_lectures/mn118md",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn10.md",
 		"/home/drabard/code/game00/notes",
-		"/home/drabard/code/game00/src/resources_storage.c.tmpl",
 		"/home/drabard/code/game00/src/resources.h",
 		"/home/drabard/code/game00/src/resources_storage.c",
 		"/home/drabard/code/game00/src/graphics_storage.c",
@@ -217,6 +255,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"create_window",
+			"static ",
+			"static",
 			"gui_",
 			"win.",
 			"gui_init",
@@ -228,6 +269,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"window_create",
+			"",
 			"window."
 		],
 		"reverse": false,
@@ -239,32 +282,88 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "build.sh",
+					"file": "src/array.h.tmpl",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 413,
+						"buffer_size": 677,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								668,
+								668
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/ShellScript/Bash.sublime-syntax",
-							"tab_size": 6,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/array.tdef",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12,
+								12
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/array.cpp.tmpl",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								735,
+								735
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -274,53 +373,86 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/main.cpp",
+					"buffer": 3,
+					"file": "src/array.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2923,
+						"buffer_size": 5752,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2110,
-								2110
+								589,
+								589
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1262.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "round_table.sublime-project",
+					"buffer": 4,
+					"file": "/home/drabard/code/game00/src/resources_storage.c.tmpl",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 200,
+						"buffer_size": 3744,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								200,
-								200
+								397,
+								397
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/drabard/code/game00/src/graphics.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2519,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								327,
+								327
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -330,61 +462,31 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/home/drabard/code/demo_framework/demo/src/demo.h",
+					"buffer": 6,
+					"file": "src/array.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1346,
+						"buffer_size": 4366,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								94,
-								94
+								4064,
+								4064
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 18.0,
+						"translation.y": 2504.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/home/drabard/code/demo_framework/demo/src/demo.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7642,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3794,
-								3794
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2718.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -443,6 +545,22 @@
 		"selected_items":
 		[
 			[
+				"array.cpp",
+				"src/array.cpp"
+			],
+			[
+				"array.tdef",
+				"src/array.tdef"
+			],
+			[
+				"build.sh",
+				"build.sh"
+			],
+			[
+				"array.h",
+				"src/array.h"
+			],
+			[
 				"main.cpp",
 				"src/main.cpp"
 			],
@@ -456,10 +574,6 @@
 			],
 			[
 				"bui\t",
-				"build.sh"
-			],
-			[
-				"build.sh",
 				"build.sh"
 			],
 			[
