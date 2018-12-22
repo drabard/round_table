@@ -1,5 +1,5 @@
 ./compile_all_templates.sh
-clang++-3.9 -g -Wall -Werror -I../src \
+clang++-3.9 -g -std=c++11 -Wall -Werror -I../src \
 -Ideps/drb_graphics/include/ \
 -Ideps/glfw-3.2.1/include/ \
 -Ideps/imgui-1.65/ \
@@ -8,6 +8,8 @@ clang++-3.9 -g -Wall -Werror -I../src \
       src/window.cpp \
       src/gui.cpp \
       src/scene.cpp \
+      src/rendering.cpp \
+      src/stb_image.cpp \
       deps/drb_graphics/lib/libdrb_graphics.a \
       deps/glfw-3.2.1/lib/libglfw3.a \
       deps/imgui-1.65/imgui.a \

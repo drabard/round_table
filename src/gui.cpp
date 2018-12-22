@@ -37,13 +37,6 @@ void gui_prepare(struct window* window)
     ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
-	ImGui::Begin("Scene", 0,
-		ImGuiWindowFlags_AlwaysAutoResize);
-	{
-		ImGui::Text("Lubie placki");
-	}
-	ImGui::End();
-
 }
 
 void gui_draw()

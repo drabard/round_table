@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "window.h"
+#include "scene.h"
 #include "gui.h"
 
 int main(int argc, char** argv)
@@ -17,6 +18,11 @@ int main(int argc, char** argv)
 	gfx_init();
 	gui_init(&window);
 
+	struct scene scene;
+	struct renderer renderer;
+
+	renderer_init(&renderer);
+
 	// float prev_time = glfwGetTime();
 	while(!window_should_close(&window))
     {
@@ -25,11 +31,15 @@ int main(int argc, char** argv)
     	// prev_time = time;
 
     	gui_prepare(&window);
-    	gui_draw();
+    	scene_process_gui(&scene, &renderer);
+    	renderer_process_gui(&renderer);
 
+    	gfx_clear_screen((v3){.x = 0.0f, .y = 0.0f, .z = 0.0f});
+    	gui_draw();
     	window_swap_buffers(&window);
     }
 
     gui_shutdown();
+    renderer_terminate(&renderer);
     window_destroy(&window);
 }
