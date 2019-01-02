@@ -24,4 +24,5 @@ struct scene
 };
 
 void scene_load_from_file(struct scene* scene, struct renderer* renderer, const char* path);
+void scene_draw(struct scene* scene, struct renderer* renderer);
 void scene_process_gui(struct scene* scene, struct renderer* renderer);

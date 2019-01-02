@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <string>
 
+#include "drb_camera.h"
 #include "drb_gpu.h"
 #include "drb_math.h"
 
@@ -23,12 +24,14 @@ struct renderer
 	gpu_shader vtx_shader;
 	gpu_shader frg_shader;
 
+	struct cam_2d camera;
+
 	std::vector< struct texture_entry > textures;
 	texture_id textures_freelist;
 	std::unordered_map< std::string, texture_id > textures_lut;
 };
 
-void renderer_init(struct renderer* renderer);
+bool renderer_init(struct renderer* renderer);
 void renderer_terminate(struct renderer* renderer);
 
 void renderer_process_gui(struct renderer* renderer);
@@ -36,4 +39,4 @@ void renderer_process_gui(struct renderer* renderer);
 texture_id renderer_request_texture(struct renderer* renderer, const std::string* path);
 void renderer_release_texture(struct renderer* renderer, texture_id id);
 
-void renderer_draw_sprite(texture_id tex_id, v2 position);
+void renderer_draw_sprite(struct renderer* renderer, texture_id tex_id, v2 position);

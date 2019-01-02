@@ -1,6 +1,6 @@
 #include <drb_graphics.h>
 
-#include <stdio.h>
+#include <cstdio>
 
 #include "window.h"
 #include "scene.h"
@@ -21,7 +21,11 @@ int main(int argc, char** argv)
 	struct scene scene;
 	struct renderer renderer;
 
-	renderer_init(&renderer);
+	if(!renderer_init(&renderer))
+    {
+        fprintf(stderr, "ERROR: Failed to initialize renderer.");
+        return 1;
+    }
 
 	// float prev_time = glfwGetTime();
 	while(!window_should_close(&window))
@@ -35,6 +39,7 @@ int main(int argc, char** argv)
     	renderer_process_gui(&renderer);
 
     	gfx_clear_screen((v3){.x = 0.0f, .y = 0.0f, .z = 0.0f});
+        scene_draw(&scene, &renderer);
     	gui_draw();
     	window_swap_buffers(&window);
     }

@@ -11,7 +11,7 @@ void node_process_gui(struct node* node)
 
 void scene_load_from_file(struct scene* scene, struct renderer* renderer, const char* path)
 {
-	std::string pstr{path};
+	std::string pstr{"data/images/panda.png"};
 	texture_id tid = renderer_request_texture(renderer, &pstr);
 	scene->nodes.push_back((node){(v2){}, tid, "Panda"});
 }
@@ -35,3 +35,10 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer)
 	ImGui::End();
 }
 
+void scene_draw(struct scene* scene, struct renderer* renderer)
+{
+	for(uint32_t ni = 0; ni < scene->nodes.size(); ++ni)
+	{
+		renderer_draw_sprite(renderer, scene->nodes[ni].tex_id, scene->nodes[ni].position);
+	}
+}

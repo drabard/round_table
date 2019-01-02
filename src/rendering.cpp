@@ -2,6 +2,7 @@
 
 #include <imgui.h>
 
+#include <cstdio>
 #include <cassert>
 
 #include "stb_image.h"
@@ -13,7 +14,6 @@ static const char* frg_shader_src = "#version 440\n"
 	"in vec3 pos;"
 	"in vec3 norm;"
 	"in vec2 tex;"
-	"uniform vec3 light_pos;"
 	"uniform sampler2D tex0;"
 	"uniform mat4 model;"
 	"void main()"
@@ -39,6 +39,12 @@ static const char* vtx_shader_src = "#version 440\n"
 	"  gl_Position = projection*view*model*vec4(position.xyz, 1.0f);"
 	"}";
 
+static const char* view_uni_name = "view";
+static const char* model_uni_name = "model";
+static const char* projection_uni_name = "projection";
+
+static const char* tex_sampler_name = "tex0";
+
 static float quad_vertices[] = {-0.5, -0.5, 0.0f, 0.0f, 0.0f,
     0.5, -0.5, 0.0f, 1.0f, 0.0f,
     0.5, 0.5, 0.0f, 1.0f, 1.0f,
@@ -50,7 +56,7 @@ static uint32_t quad_indices[] = {
     2, 3, 0
 };
 
-void renderer_init(struct renderer* renderer)
+bool renderer_init(struct renderer* renderer)
 {
 	*renderer = (struct renderer){};
 	renderer->textures_freelist = INVALID_TID;
@@ -64,6 +70,33 @@ void renderer_init(struct renderer* renderer)
 	gpu_link_program(&renderer->program, renderer->vtx_shader,
 	                                 renderer->frg_shader);
 	gpu_activate_program(renderer->program);
+
+	m4 identity;
+	m4_unit(&identity);
+
+	gpu_uniform uni;
+    if(gpu_get_uniform(renderer->program, view_uni_name, &uni) != GPU_OK)
+        goto error;
+    if(gpu_set_uniform_m4(uni, (float*)identity.data) != GPU_OK)
+        goto error;
+
+    if(gpu_get_uniform(renderer->program, model_uni_name, &uni) != GPU_OK)
+        goto error;
+    if(gpu_set_uniform_m4(uni, (float*)identity.data) != GPU_OK)
+        goto error;
+
+    if(gpu_get_uniform(renderer->program, projection_uni_name, &uni) != GPU_OK)
+        goto error;
+    if(gpu_set_uniform_m4(uni, (float*)identity.data) != GPU_OK)
+        goto error;
+
+	stbi_set_flip_vertically_on_load(1);
+
+    return true;
+
+    error:
+    fprintf(stderr, "ERROR: Failed to initialize renderer.\n");
+    return false;
 }
 
 void renderer_terminate(struct renderer* renderer)
@@ -95,8 +128,9 @@ texture_id renderer_request_texture(struct renderer* renderer, const std::string
 	int width = 0;
 	int height = 0;
 	int comp = 0;
-	const uint8_t* data = stbi_load(path->c_str(), &width, &height, &comp, 3);
+	const uint8_t* data = stbi_load(path->c_str(), &width, &height, &comp, 4);
 	gpu_texture_create_RGBA(&new_entry.texture, data, width, height);
+	stbi_image_free((void*)data);
 
 	new_entry.next_free = INVALID_TID;
 	new_entry.refcount = 1;
@@ -128,8 +162,8 @@ void renderer_release_texture(struct renderer* renderer, texture_id id)
 
 void renderer_draw_sprite(struct renderer* renderer, texture_id tex_id, v2 position)
 {
-//void gpu_vertex_buffer_draw(const struct gpu_vertex_buffer* tgt);
-
+	gpu_activate_program(renderer->program);
+	gpu_texture_bind(&renderer->textures[tex_id].texture, &renderer->program, 1, 0, tex_sampler_name);
 	gpu_vertex_buffer_draw(&renderer->quad_vb);
 }
 
