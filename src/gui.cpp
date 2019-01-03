@@ -6,41 +6,37 @@
 
 #include "window.h"
 
-void gui_init(struct window* window)
-{
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
+void gui_init(struct window* window) {
+  IMGUI_CHECKVERSION();
+  ImGui::CreateContext();
+  ImGuiIO& io = ImGui::GetIO();
 
-	ImGui_ImplGlfw_InitForOpenGL(window->glfw_win, true);
-	ImGui_ImplOpenGL3_Init("#version 130");
+  ImGui_ImplGlfw_InitForOpenGL(window->glfw_win, true);
+  ImGui_ImplOpenGL3_Init("#version 130");
 
-	ImGui::StyleColorsDark();
+  ImGui::StyleColorsDark();
 
-	unsigned char* tex_pixels = NULL;
-	int tex_w, tex_h;
-	io.Fonts->GetTexDataAsRGBA32(&tex_pixels, &tex_w, &tex_h);
+  unsigned char* tex_pixels = NULL;
+  int tex_w, tex_h;
+  io.Fonts->GetTexDataAsRGBA32(&tex_pixels, &tex_w, &tex_h);
 }
 
-void gui_shutdown()
-{
-	ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();
+void gui_shutdown() {
+  ImGui_ImplOpenGL3_Shutdown();
+  ImGui_ImplGlfw_Shutdown();
+  ImGui::DestroyContext();
 }
 
-void gui_prepare(struct window* window)
-{
-	ImGuiIO& io = ImGui::GetIO();
-	io.DisplaySize = ImVec2(window->width, window->height);
-    io.DeltaTime = 1.0f / 60.0f;
-    ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplGlfw_NewFrame();
-	ImGui::NewFrame();
+void gui_prepare(struct window* window) {
+  ImGuiIO& io = ImGui::GetIO();
+  io.DisplaySize = ImVec2(window->width, window->height);
+  io.DeltaTime = 1.0f / 60.0f;
+  ImGui_ImplOpenGL3_NewFrame();
+  ImGui_ImplGlfw_NewFrame();
+  ImGui::NewFrame();
 }
 
-void gui_draw()
-{
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+void gui_draw() {
+  ImGui::Render();
+  ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
