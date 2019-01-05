@@ -1,4 +1,4 @@
-clang-3.9 -g -c -Wall -Werror -std=c11 -Iinclude/ -Isrc/ -fno-exceptions -ferror-limit=1 \
+clang -g -c -Wall -Werror -std=c11 -Iinclude/ -Isrc/ -fno-exceptions -ferror-limit=1 \
       src/graphics.c \
       src/gpu.c \
 	  src/math.c \

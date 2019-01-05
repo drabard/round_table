@@ -2,7 +2,7 @@
 pushd deps/drb_graphics/
 ./build.sh
 popd
-clang++-3.9 -g -std=c++11 -Wall -Werror -I../src \
+clang++ -g -std=c++11 -Wall -Werror -I../src \
 -Ideps/drb_graphics/include/ \
 -Ideps/glfw-3.2.1/include/ \
 -Ideps/imgui-1.65/ \
