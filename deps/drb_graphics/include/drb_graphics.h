@@ -15,14 +15,14 @@ extern "C" {
 
 typedef uint8_t bool_t;
 
-typedef void (*gfx_log_fptr)(const char*, ...);
+typedef void (*gfx_log_fptr)(const char* txt, ...);
 void gfx_set_log(gfx_log_fptr l);
 
 extern gfx_log_fptr gfx_text_log;
 
-typedef void* (*gfx_malloc_fptr)(size_t);
-typedef void (*gfx_free_fptr)(void*);
-typedef void* (*gfx_realloc_fptr)(void*, size_t);
+typedef void* (*gfx_malloc_fptr)(size_t nbytes);
+typedef void (*gfx_free_fptr)(void* ptr);
+typedef void* (*gfx_realloc_fptr)(void* ptr, size_t nbytes);
 void gfx_set_mem(gfx_malloc_fptr m, gfx_free_fptr f, gfx_realloc_fptr r);
 
 extern gfx_malloc_fptr gfx_malloc;

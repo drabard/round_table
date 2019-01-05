@@ -23,7 +23,7 @@ enum gpu_vertex_flags {
 };
 extern const uint32_t gpu_max_vert_bytes;
 
-typedef void (*gpu_log_fptr)(const char*, ...);
+typedef void (*gpu_log_fptr)(const char* txt, ...);
 void gpu_set_log(gpu_log_fptr l);
 
 enum gpu_status gpu_init();
