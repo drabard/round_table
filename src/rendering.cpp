@@ -28,8 +28,7 @@ static const char* vtx_shader_src =
     "layout(location = 1) in vec3 normal;"
     "layout(location = 2) in vec3 texcoord;"
     "uniform mat4 model;"
-    "uniform mat4 view;"
-    "uniform mat4 projection;"
+    "uniform mat4 view_projection;"
     "out vec3 pos;"
     "out vec3 norm;"
     "out vec2 tex;"
@@ -38,12 +37,12 @@ static const char* vtx_shader_src =
     "  pos = position;"
     "  norm = normal;"
     "  tex = texcoord.xy;"
-    "  gl_Position = projection*view*model*vec4(position.xyz, 1.0f);"
+    "  gl_Position = view_projection*model*vec4(position.xyz, 1.0f);"
+    "  gl_Position = model*vec4(position.xyz, 1.0f);"    
     "}";
 
-static const char* view_uni_name = "view";
 static const char* model_uni_name = "model";
-static const char* projection_uni_name = "projection";
+static const char* view_projection_uni_name = "view_projection";
 
 static const char* tex_sampler_name = "tex0";
 
@@ -72,17 +71,7 @@ bool renderer_init(struct renderer* renderer) {
   m4_unit(&identity);
 
   gpu_uniform uni;
-  if (gpu_get_uniform(renderer->program, view_uni_name, &uni) != GPU_OK)
-    goto error;
-  if (gpu_set_uniform_m4(uni, (float*)identity.data) != GPU_OK)
-    goto error;
-
   if (gpu_get_uniform(renderer->program, model_uni_name, &uni) != GPU_OK)
-    goto error;
-  if (gpu_set_uniform_m4(uni, (float*)identity.data) != GPU_OK)
-    goto error;
-
-  if (gpu_get_uniform(renderer->program, projection_uni_name, &uni) != GPU_OK)
     goto error;
   if (gpu_set_uniform_m4(uni, (float*)identity.data) != GPU_OK)
     goto error;
@@ -152,12 +141,27 @@ void renderer_release_texture(struct renderer* renderer, texture_id id) {
   }
 }
 
-void renderer_draw_sprite(struct renderer* renderer, texture_id tex_id,
+void renderer_draw_sprite(struct renderer* renderer, const m4* pv, texture_id tex_id,
                           v2 position) {
   gpu_activate_program(renderer->program);
+
+  m4 pvt;
+  m4_unit(&pvt);
+
+  gpu_uniform uni;
+  if (gpu_get_uniform(renderer->program, view_projection_uni_name, &uni) != GPU_OK)
+    goto error;
+  if (gpu_set_uniform_m4(uni, (float*)&pvt) != GPU_OK)
+    goto error;
+
   gpu_texture_bind(&renderer->textures[tex_id].texture, &renderer->program, 1,
                    0, tex_sampler_name);
   gpu_vertex_buffer_draw(&renderer->quad_vb);
+
+  return;
+
+  error:
+  fprintf(stderr, "ERROR: Failed to draw sprite.\n");
 }
 
 void renderer_process_gui(struct renderer* renderer) {

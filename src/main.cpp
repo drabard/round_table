@@ -16,9 +16,9 @@ int main(int argc, char** argv) {
   gfx_init();
   gui_init(&window);
 
-  struct scene scene;
-  struct renderer renderer;
+  struct scene scene = (struct scene){};
 
+  struct renderer renderer;
   if (!renderer_init(&renderer)) {
     fprintf(stderr, "ERROR: Failed to initialize renderer.");
     return 1;
@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     // prev_time = time;
 
     gui_prepare(&window);
-    scene_process_gui(&scene, &renderer);
+    scene_process_gui(&scene, &renderer, &window);
     renderer_process_gui(&renderer);
 
     gfx_clear_screen((v3){.x = 0.0f, .y = 0.0f, .z = 0.0f});

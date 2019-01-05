@@ -12,49 +12,74 @@
 	"buffers":
 	[
 		{
-			"file": "deps/drb_graphics/src/camera.c",
-			"settings":
-			{
-				"buffer_size": 1873,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "deps/drb_graphics/include/drb_camera.h",
 			"settings":
 			{
-				"buffer_size": 842,
+				"buffer_size": 834,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "deps/drb_graphics/include/drb_math.h",
+			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 2658,
+				"buffer_size": 1059,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "deps/drb_graphics/src/math.c",
+			"file": "src/scene.h",
 			"settings":
 			{
-				"buffer_size": 10951,
+				"buffer_size": 631,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 60 files for \"m4_at\"\n\n/home/drabard/code/round_table/deps/drb_graphics/include/drb_math.h:\n  102  } m4;\n  103  \n  104: #define m4_at(matrix, row, column) (&(matrix)->data[4 * (row) + (column)])\n  105  \n  106  void m4_copy(m4*, const m4* src);\n\n/home/drabard/code/round_table/deps/drb_graphics/src/camera.c:\n   69      m4_look_at(out_vp, cam->position, cam->position, v3 up);\n   70  \n   71:     m4_at(cam)\n   72  }\n   73  \n\n/home/drabard/code/round_table/deps/drb_graphics/src/math.c:\n  279  \n  280      for (uint32_t i = 0; i < 4; ++i) {\n  281:         *m4_at(dst, i, i) = 1.0f;\n  282      }\n  283  }\n  ...\n  290              float sum = 0.0f;\n  291              for (uint32_t col_left = 0; col_left < 4; ++col_left) {\n  292:                 float a = *m4_at(dst, row, col_left);\n  293:                 float b = *m4_at(right, col_left, col);\n  294                  sum += a * b;\n  295              }\n  296:             *m4_at(&res, row, col) = sum;\n  297          }\n  298      }\n  ...\n  308  {\n  309      v3 res;\n  310:     res.data[0] = *m4_at(&m, 0, 0) * v->x + *m4_at(&m, 0, 1) * v->y + *m4_at(&m, 0, 2) * v->z + *m4_at(&m, 0, 3);\n  311:     res.data[1] = *m4_at(&m, 1, 0) * v->x + *m4_at(&m, 1, 1) * v->y + *m4_at(&m, 1, 2) * v->z + *m4_at(&m, 1, 3);\n  312:     res.data[2] = *m4_at(&m, 2, 0) * v->x + *m4_at(&m, 2, 1) * v->y + *m4_at(&m, 2, 2) * v->z + *m4_at(&m, 2, 3);\n  313      v3_copy(v, res);\n  314  }\n  ...\n  329  \n  330      *dst = (m4){};\n  331:     *m4_at(dst, 0, 0) = 1 - yy - zz;\n  332:     *m4_at(dst, 0, 1) = xy - wz;\n  333:     *m4_at(dst, 0, 2) = xz + wy;\n  334:     *m4_at(dst, 1, 0) = xy + wz;\n  335:     *m4_at(dst, 1, 1) = 1 - xx - zz;\n  336:     *m4_at(dst, 1, 2) = yz - wx;\n  337:     *m4_at(dst, 2, 0) = xz - wy;\n  338:     *m4_at(dst, 2, 1) = yz + wx;\n  339:     *m4_at(dst, 2, 2) = 1 - xx - yy;\n  340:     *m4_at(dst, 3, 3) = 1;\n  341  }\n  342  \n  ...\n  345      m4 x_rotation = {};\n  346  \n  347:     *m4_at(&x_rotation, 3, 3) = 1.0f;\n  348:     *m4_at(&x_rotation, 0, 0) = 1.0f;\n  349:     *m4_at(&x_rotation, 1, 1) = cosf(angles.x);\n  350:     *m4_at(&x_rotation, 1, 2) = -sinf(angles.x);\n  351:     *m4_at(&x_rotation, 2, 1) = sinf(angles.x);\n  352:     *m4_at(&x_rotation, 2, 2) = cosf(angles.x);\n  353  \n  354      m4 y_rotation = {};\n  355:     *m4_at(&y_rotation, 3, 3) = 1.0f;\n  356:     *m4_at(&y_rotation, 0, 0) = cosf(angles.y);\n  357:     *m4_at(&y_rotation, 1, 1) = 1.0f;\n  358:     *m4_at(&y_rotation, 0, 2) = sinf(angles.y);\n  359:     *m4_at(&y_rotation, 2, 0) = -sinf(angles.y);\n  360:     *m4_at(&y_rotation, 2, 2) = cosf(angles.y);\n  361  \n  362      m4 z_rotation = {};\n  363:     *m4_at(&z_rotation, 3, 3) = 1.0f;\n  364:     *m4_at(&z_rotation, 0, 0) = cosf(angles.z);\n  365:     *m4_at(&z_rotation, 0, 1) = -sinf(angles.z);\n  366:     *m4_at(&z_rotation, 1, 0) = sinf(angles.z);\n  367:     *m4_at(&z_rotation, 1, 1) = cosf(angles.z);\n  368:     *m4_at(&z_rotation, 2, 2) = 1.0f;\n  369  \n  370      m4_dot(&y_rotation, &z_rotation);\n  ...\n  378      *dst = (m4){};\n  379      for (uint32_t idx = 0; idx < 4; ++idx) {\n  380:         *m4_at(dst, idx, idx) = 1.0f;\n  381      }\n  382:     *m4_at(dst, 3, 0) = vec.x;\n  383:     *m4_at(dst, 3, 1) = vec.y;\n  384:     *m4_at(dst, 3, 2) = vec.z;\n  385  }\n  386  \n  387  void m4_set_translation(m4* dst, v3 vec)\n  388  {\n  389:     *m4_at(dst, 3, 0) = vec.x;\n  390:     *m4_at(dst, 3, 1) = vec.y;\n  391:     *m4_at(dst, 3, 2) = vec.z;\n  392  }\n  393  \n  ...\n  396      *dst = (m4){};\n  397      for (uint32_t idx = 0; idx < 3; ++idx) {\n  398:         *m4_at(dst, idx, idx) = vec.data[idx];\n  399      }\n  400:     *m4_at(dst, 3, 3) = 1.0f;\n  401  }\n  402  \n  ...\n  404  {\n  405      for (uint32_t idx = 0; idx < 3; ++idx) {\n  406:         *m4_at(dst, idx, idx) = vec.data[idx];\n  407      }\n  408  }\n  ...\n  428  \n  429      v3_neg(&from);\n  430:     *m4_at(dst, 0, 0) = xaxis.x;\n  431:     *m4_at(dst, 1, 0) = xaxis.y;\n  432:     *m4_at(dst, 2, 0) = xaxis.z;\n  433:     *m4_at(dst, 3, 0) = v3_dot(xaxis, from);\n  434:     *m4_at(dst, 0, 1) = yaxis.x;\n  435:     *m4_at(dst, 1, 1) = yaxis.y;\n  436:     *m4_at(dst, 2, 1) = yaxis.z;\n  437:     *m4_at(dst, 3, 1) = v3_dot(yaxis, from);\n  438:     *m4_at(dst, 0, 2) = zaxis.x;\n  439:     *m4_at(dst, 1, 2) = zaxis.y;\n  440:     *m4_at(dst, 2, 2) = zaxis.z;\n  441:     *m4_at(dst, 3, 2) = v3_dot(zaxis, from);\n  442:     *m4_at(dst, 3, 3) = 1.0f;\n  443  }\n  444  \n  ...\n  450      float tmb = top - bottom;\n  451      float nmf = near - far;\n  452:     *m4_at(dst, 0, 0) = 2.0f / rml;\n  453:     *m4_at(dst, 1, 1) = 2.0f / tmb;\n  454:     *m4_at(dst, 2, 2) = 2.0f / nmf;\n  455:     *m4_at(dst, 3, 3) = 1.0f;\n  456  \n  457:     *m4_at(dst, 3, 0) = -(right + left) / rml;\n  458:     *m4_at(dst, 3, 1) = -(top + bottom) / tmb;\n  459:     *m4_at(dst, 3, 2) = (near + far) / nmf;\n  460  }\n  461  \n  ...\n  466      float width = height * aspect_ratio;\n  467      float nmf = near - far;\n  468:     *m4_at(dst, 0, 0) = 2.0f / width;\n  469:     *m4_at(dst, 1, 1) = 2.0f / height;\n  470:     *m4_at(dst, 2, 2) = 2.0f / nmf;\n  471:     *m4_at(dst, 3, 3) = 1.0f;\n  472  \n  473:     *m4_at(dst, 3, 2) = (near + far) / nmf;\n  474  }\n  475  \n  ...\n  482      float tan_half_fov = tanf(0.5f * fov * DEG_TO_RAD);\n  483  \n  484:     *m4_at(dst, 0, 0) = 1.0f / tan_half_fov;\n  485:     *m4_at(dst, 1, 1) = aspect / tan_half_fov;\n  486:     *m4_at(dst, 2, 2) = (far + near) / depth;\n  487:     *m4_at(dst, 3, 2) = 2.0f * (far * near) / depth;\n  488:     *m4_at(dst, 2, 3) = -1.0f;\n  489  }\n  490  \n  ...\n  515      *dst = (m4){};\n  516  \n  517:     *m4_at(dst, 0, 0) = xaxis.x;\n  518:     *m4_at(dst, 1, 0) = xaxis.y;\n  519:     *m4_at(dst, 2, 0) = xaxis.z;\n  520  \n  521:     *m4_at(dst, 0, 1) = yaxis.x;\n  522:     *m4_at(dst, 1, 1) = yaxis.y;\n  523:     *m4_at(dst, 2, 1) = yaxis.z;\n  524  \n  525:     *m4_at(dst, 0, 2) = zaxis.x;\n  526:     *m4_at(dst, 1, 2) = zaxis.y;\n  527:     *m4_at(dst, 2, 2) = zaxis.z;\n  528  \n  529:     *m4_at(dst, 3, 3) = 1.0f;\n  530  \n  531:     *m4_at(dst, 3, 0) = -v3_dot(xaxis, pos);\n  532:     *m4_at(dst, 3, 1) = -v3_dot(yaxis, pos);\n  533:     *m4_at(dst, 3, 2) = -v3_dot(zaxis, pos);\n  534  }\n  535  \n\n99 matches across 3 files\n",
+			"file": "deps/drb_graphics/src/camera.c",
 			"settings":
 			{
-				"buffer_size": 6199,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
+				"buffer_size": 1812,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/scene.cpp",
+			"settings":
+			{
+				"buffer_size": 1531,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/drabard/code/demo_framework/demo/src/demo.cpp",
+			"settings":
+			{
+				"buffer_size": 7642,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/rendering.h",
+			"settings":
+			{
+				"buffer_size": 1091,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/rendering.cpp",
+			"settings":
+			{
+				"buffer_size": 4995,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -138,19 +163,24 @@
 	],
 	"file_history":
 	[
+		"/home/drabard/code/demo_framework/src/camera.c",
+		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_math.h",
 		"/home/drabard/code/round_table/src/rendering.h",
+		"/home/drabard/code/round_table/src/window.h",
+		"/home/drabard/code/round_table/src/scene.cpp",
+		"/home/drabard/code/round_table/src/gui.cpp",
+		"/home/drabard/code/round_table/src/scene.h",
+		"/home/drabard/code/round_table/src/main.cpp",
+		"/home/drabard/code/round_table/deps/drb_graphics/src/math.c",
+		"/home/drabard/code/round_table/.clang-format",
+		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_camera.h",
+		"/home/drabard/code/round_table/src/rendering.cpp",
+		"/home/drabard/code/round_table/deps/drb_graphics/src/camera.c",
 		"/home/drabard/code/round_table/build.sh",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/gpu.c",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/graphics.c",
-		"/home/drabard/code/round_table/deps/drb_graphics/src/camera.c",
-		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_camera.h",
-		"/home/drabard/code/round_table/src/rendering.cpp",
-		"/home/drabard/code/round_table/src/scene.h",
 		"/home/drabard/code/round_table/src/stb_image.h",
-		"/home/drabard/code/round_table/src/main.cpp",
-		"/home/drabard/code/round_table/src/scene.cpp",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/imvis.c",
-		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_math.h",
 		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_gpu.h",
 		"/home/drabard/code/round_table/src/window.cpp",
 		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_graphics.h",
@@ -159,9 +189,7 @@
 		"/home/drabard/code/round_table/src/stb_image.cpp",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/rendering.cpp",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/rendering.h",
-		"/home/drabard/code/round_table/src/gui.cpp",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.h",
-		"/home/drabard/code/round_table/src/window.h",
 		"/usr/include/c++/6/string",
 		"/usr/include/string.h",
 		"/home/drabard/code/round_table/src/array.cpp",
@@ -259,6 +287,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			",\n",
+			"PointerAlignment",
 			"*m4_at",
 			"m4_at(*",
 			"m4_at",
@@ -329,54 +359,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "deps/drb_graphics/src/camera.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1873,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1872,
-								1872
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 575.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "deps/drb_graphics/include/drb_camera.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 842,
+						"buffer_size": 834,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								579,
-								579
+								790,
+								790
 							]
 						],
 						"settings":
@@ -387,505 +387,214 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "deps/drb_graphics/include/drb_math.h",
+					"buffer": 1,
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2658,
+						"buffer_size": 1059,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2279,
-								2279
+								575,
+								575
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1311.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/scene.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 631,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								330,
+								330
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "deps/drb_graphics/src/camera.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1812,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1629,
+								1629
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 161.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "deps/drb_graphics/src/math.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10951,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7737,
-								7737
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 5241.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
 					"buffer": 4,
+					"file": "src/scene.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6199,
+						"buffer_size": 1531,
 						"regions":
 						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										137,
-										142
-									],
-									[
-										404,
-										409
-									],
-									[
-										564,
-										569
-									],
-									[
-										763,
-										768
-									],
-									[
-										824,
-										829
-									],
-									[
-										931,
-										936
-									],
-									[
-										1050,
-										1055
-									],
-									[
-										1076,
-										1081
-									],
-									[
-										1102,
-										1107
-									],
-									[
-										1128,
-										1133
-									],
-									[
-										1171,
-										1176
-									],
-									[
-										1197,
-										1202
-									],
-									[
-										1223,
-										1228
-									],
-									[
-										1249,
-										1254
-									],
-									[
-										1292,
-										1297
-									],
-									[
-										1318,
-										1323
-									],
-									[
-										1344,
-										1349
-									],
-									[
-										1370,
-										1375
-									],
-									[
-										1476,
-										1481
-									],
-									[
-										1520,
-										1525
-									],
-									[
-										1560,
-										1565
-									],
-									[
-										1600,
-										1605
-									],
-									[
-										1640,
-										1645
-									],
-									[
-										1684,
-										1689
-									],
-									[
-										1724,
-										1729
-									],
-									[
-										1764,
-										1769
-									],
-									[
-										1804,
-										1809
-									],
-									[
-										1848,
-										1853
-									],
-									[
-										1944,
-										1949
-									],
-									[
-										1989,
-										1994
-									],
-									[
-										2034,
-										2039
-									],
-									[
-										2089,
-										2094
-									],
-									[
-										2145,
-										2150
-									],
-									[
-										2200,
-										2205
-									],
-									[
-										2294,
-										2299
-									],
-									[
-										2339,
-										2344
-									],
-									[
-										2394,
-										2399
-									],
-									[
-										2439,
-										2444
-									],
-									[
-										2494,
-										2499
-									],
-									[
-										2550,
-										2555
-									],
-									[
-										2644,
-										2649
-									],
-									[
-										2689,
-										2694
-									],
-									[
-										2744,
-										2749
-									],
-									[
-										2800,
-										2805
-									],
-									[
-										2855,
-										2860
-									],
-									[
-										2910,
-										2915
-									],
-									[
-										3096,
-										3101
-									],
-									[
-										3150,
-										3155
-									],
-									[
-										3188,
-										3193
-									],
-									[
-										3226,
-										3231
-									],
-									[
-										3338,
-										3343
-									],
-									[
-										3376,
-										3381
-									],
-									[
-										3414,
-										3419
-									],
-									[
-										3557,
-										3562
-									],
-									[
-										3620,
-										3625
-									],
-									[
-										3745,
-										3750
-									],
-									[
-										3857,
-										3862
-									],
-									[
-										3897,
-										3902
-									],
-									[
-										3937,
-										3942
-									],
-									[
-										3977,
-										3982
-									],
-									[
-										4029,
-										4034
-									],
-									[
-										4069,
-										4074
-									],
-									[
-										4109,
-										4114
-									],
-									[
-										4149,
-										4154
-									],
-									[
-										4201,
-										4206
-									],
-									[
-										4241,
-										4246
-									],
-									[
-										4281,
-										4286
-									],
-									[
-										4321,
-										4326
-									],
-									[
-										4373,
-										4378
-									],
-									[
-										4505,
-										4510
-									],
-									[
-										4548,
-										4553
-									],
-									[
-										4591,
-										4596
-									],
-									[
-										4634,
-										4639
-									],
-									[
-										4679,
-										4684
-									],
-									[
-										4733,
-										4738
-									],
-									[
-										4787,
-										4792
-									],
-									[
-										4944,
-										4949
-									],
-									[
-										4989,
-										4994
-									],
-									[
-										5035,
-										5040
-									],
-									[
-										5078,
-										5083
-									],
-									[
-										5123,
-										5128
-									],
-									[
-										5268,
-										5273
-									],
-									[
-										5320,
-										5325
-									],
-									[
-										5374,
-										5379
-									],
-									[
-										5427,
-										5432
-									],
-									[
-										5487,
-										5492
-									],
-									[
-										5582,
-										5587
-									],
-									[
-										5622,
-										5627
-									],
-									[
-										5662,
-										5667
-									],
-									[
-										5710,
-										5715
-									],
-									[
-										5750,
-										5755
-									],
-									[
-										5790,
-										5795
-									],
-									[
-										5838,
-										5843
-									],
-									[
-										5878,
-										5883
-									],
-									[
-										5918,
-										5923
-									],
-									[
-										5966,
-										5971
-									],
-									[
-										6011,
-										6016
-									],
-									[
-										6063,
-										6068
-									],
-									[
-										6115,
-										6120
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1194,
+								1194
 							]
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/drabard/code/demo_framework/demo/src/demo.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7642,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1565,
+								1565
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 606.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/rendering.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								947,
+								947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/rendering.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4995,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4527,
+								4527
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1781.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -934,7 +643,7 @@
 	"project": "round_table.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -944,11 +653,51 @@
 		"selected_items":
 		[
 			[
+				"main.cpp",
+				"src/main.cpp"
+			],
+			[
+				"scene.h",
+				"src/scene.h"
+			],
+			[
+				"rendering.cpp",
+				"src/rendering.cpp"
+			],
+			[
+				"camera.c",
+				"deps/drb_graphics/src/camera.c"
+			],
+			[
+				"drb_camera.h",
+				"deps/drb_graphics/include/drb_camera.h"
+			],
+			[
+				"drb_math",
+				"deps/drb_graphics/include/drb_math.h"
+			],
+			[
 				"rendering.h",
 				"src/rendering.h"
 			],
 			[
-				"drb_camera.h",
+				"scene.cpp",
+				"src/scene.cpp"
+			],
+			[
+				"math.h",
+				"deps/drb_graphics/include/drb_math.h"
+			],
+			[
+				"window.h",
+				"src/window.h"
+			],
+			[
+				"gui.cpp",
+				"src/gui.cpp"
+			],
+			[
+				"camera.h",
 				"deps/drb_graphics/include/drb_camera.h"
 			],
 			[
@@ -960,14 +709,6 @@
 				"deps/drb_graphics/include/drb_math.h"
 			],
 			[
-				"camera.c",
-				"deps/drb_graphics/src/camera.c"
-			],
-			[
-				"scene.h",
-				"src/scene.h"
-			],
-			[
 				"graphics.c",
 				"deps/drb_graphics/src/graphics.c"
 			],
@@ -976,28 +717,12 @@
 				"src/stb_image.h"
 			],
 			[
-				"scene.cpp",
-				"src/scene.cpp"
-			],
-			[
 				"build.sh",
 				"build.sh"
 			],
 			[
 				"gpu.c",
 				"deps/drb_graphics/src/gpu.c"
-			],
-			[
-				"rendering.cpp",
-				"src/rendering.cpp"
-			],
-			[
-				"main.cpp",
-				"src/main.cpp"
-			],
-			[
-				"drb_math",
-				"deps/drb_graphics/include/drb_math.h"
 			],
 			[
 				"scene",
@@ -1040,14 +765,6 @@
 				"deps/imgui-1.65/imgui.h"
 			],
 			[
-				"gui.cpp",
-				"src/gui.cpp"
-			],
-			[
-				"window.h",
-				"src/window.h"
-			],
-			[
 				"",
 				"build.sh"
 			],
@@ -1086,10 +803,6 @@
 			[
 				"bui\t",
 				"build.sh"
-			],
-			[
-				"math.h",
-				"src/math.h"
 			],
 			[
 				"not",
