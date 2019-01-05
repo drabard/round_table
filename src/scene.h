@@ -19,7 +19,6 @@ struct node {
 void node_process_gui(struct node* node);
 
 struct scene {
-  struct cam_2d camera;
   std::vector<node> nodes;
 };
 

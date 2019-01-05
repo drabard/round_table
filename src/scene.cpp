@@ -19,7 +19,7 @@ void scene_load_from_file(struct scene* scene, struct renderer* renderer, struct
 
   m4 projection;
   m4_orthographic_sym(&projection, window->width, window->width / window->height, 0.01f, 100.0f);
-  cam_2d_init(&scene->camera, (v2){.x = 0.0f, .y = 0.0f}, &projection);
+//  cam_2d_init(&scene->camera, (v2){.x = 0.0f, .y = 0.0f}, &projection);
 }
 
 void scene_process_gui(struct scene* scene, struct renderer* renderer, struct window* window) {
@@ -40,7 +40,8 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer, struct wi
 
 void scene_draw(struct scene* scene, struct renderer* renderer) {
   m4 cam_view_proj;
-  cam_2d_view_projection(&scene->camera, &cam_view_proj);
+  m4_unit(&cam_view_proj);
+  //cam_2d_view_projection(&scene->camera, &cam_view_proj);
   for (uint32_t ni = 0; ni < scene->nodes.size(); ++ni) {
     renderer_draw_sprite(renderer, &cam_view_proj, scene->nodes[ni].tex_id,
                          scene->nodes[ni].position);

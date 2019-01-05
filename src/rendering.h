@@ -22,8 +22,6 @@ struct renderer {
   gpu_shader vtx_shader;
   gpu_shader frg_shader;
 
-  struct cam_2d camera;
-
   std::vector<struct texture_entry> textures;
   texture_id textures_freelist;
   std::unordered_map<std::string, texture_id> textures_lut;

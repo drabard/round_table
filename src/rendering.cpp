@@ -38,9 +38,8 @@ static const char* vtx_shader_src =
     "  norm = normal;"
     "  tex = texcoord.xy;"
     "  gl_Position = view_projection*model*vec4(position.xyz, 1.0f);"
-    "  gl_Position = model*vec4(position.xyz, 1.0f);"    
     "}";
-
+    
 static const char* model_uni_name = "model";
 static const char* view_projection_uni_name = "view_projection";
 
