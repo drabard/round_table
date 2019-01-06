@@ -24,6 +24,15 @@ void cam_noroll_update(struct cam_noroll*, float yaw_d, float pitch_d,
                        v3 pos_d);
 void cam_noroll_view_projection(struct cam_noroll*, m4* out_vp);
 
+struct cam_2d {
+	m4 projection;
+	v2 position;
+};
+
+void cam_2d_init(struct cam_2d*, v2 position, float width, float height, float near, float far);
+void cam_2d_update(struct cam_2d*, v2 dpos);
+void cam_2d_view_projection(struct cam_2d*, m4* out_vp);
+
 #ifdef __cplusplus
 }
 #endif

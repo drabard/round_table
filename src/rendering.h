@@ -37,5 +37,6 @@ texture_id renderer_request_texture(struct renderer* renderer,
 void renderer_release_texture(struct renderer* renderer, texture_id id);
 
 // todo: batch drawing
-void renderer_draw_sprite(struct renderer* renderer, const struct m4* cam_transform, texture_id tex_id,
+void renderer_draw_sprite(struct renderer* renderer,
+                          const struct m4* cam_transform, texture_id tex_id,
                           v2 position);

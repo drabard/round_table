@@ -140,17 +140,15 @@ void renderer_release_texture(struct renderer* renderer, texture_id id) {
   }
 }
 
-void renderer_draw_sprite(struct renderer* renderer, const m4* pv, texture_id tex_id,
-                          v2 position) {
+void renderer_draw_sprite(struct renderer* renderer, const m4* pv,
+                          texture_id tex_id, v2 position) {
   gpu_activate_program(renderer->program);
 
-  m4 pvt;
-  m4_unit(&pvt);
-
   gpu_uniform uni;
-  if (gpu_get_uniform(renderer->program, view_projection_uni_name, &uni) != GPU_OK)
+  if (gpu_get_uniform(renderer->program, view_projection_uni_name, &uni) !=
+      GPU_OK)
     goto error;
-  if (gpu_set_uniform_m4(uni, (float*)&pvt) != GPU_OK)
+  if (gpu_set_uniform_m4(uni, (float*)pv) != GPU_OK)
     goto error;
 
   gpu_texture_bind(&renderer->textures[tex_id].texture, &renderer->program, 1,
@@ -159,7 +157,7 @@ void renderer_draw_sprite(struct renderer* renderer, const m4* pv, texture_id te
 
   return;
 
-  error:
+error:
   fprintf(stderr, "ERROR: Failed to draw sprite.\n");
 }
 

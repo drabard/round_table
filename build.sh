@@ -1,3 +1,4 @@
+./format.sh
 ./compile_all_templates.sh
 pushd deps/drb_graphics/
 ./build.sh

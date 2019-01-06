@@ -52,3 +52,22 @@ void cam_noroll_view_projection(struct cam_noroll* cam, m4* out_vp)
     m4_view_from_quat(out_vp, cam->orientation, cam->position);
     m4_dot(out_vp, &cam->projection);
 }
+
+void cam_2d_init(struct cam_2d* cam, v2 position, float width, float height, float near, float far)
+{
+    cam->position = position;
+    m4_orthographic_sym(&cam->projection, 10.0f, width/height, near, far);
+}
+
+void cam_2d_update(struct cam_2d* cam, v2 dpos)
+{
+    v2_add(&cam->position, dpos);
+}
+
+void cam_2d_view_projection(struct cam_2d* cam, m4* out_vp)
+{
+    const float cam_z = 0.0f;
+    m4_unit(out_vp);
+    m4_set_translation(out_vp, (v3){.x = -cam->position.x, .y = -cam->position.y, .z = cam_z});
+    m4_dot(out_vp, &cam->projection);
+}
