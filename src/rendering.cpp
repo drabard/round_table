@@ -75,22 +75,9 @@ bool renderer_init(struct renderer* renderer) {
                    renderer->frg_shader);
   gpu_activate_program(renderer->program);
 
-  m4 identity;
-  m4_unit(&identity);
-
-  gpu_uniform uni;
-  if (gpu_get_uniform(renderer->program, model_uni_name, &uni) != GPU_OK)
-    goto error;
-  if (gpu_set_uniform_m4(uni, (float*)identity.data) != GPU_OK)
-    goto error;
-
   stbi_set_flip_vertically_on_load(1);
 
   return true;
-
-error:
-  fprintf(stderr, "ERROR: Failed to initialize renderer.\n");
-  return false;
 }
 
 void renderer_terminate(struct renderer* renderer) {
@@ -153,11 +140,23 @@ void renderer_draw_sprite(struct renderer* renderer, struct sprite* sprite,
                           v2 position, const m4* pv) {
   gpu_activate_program(renderer->program);
 
+  m4 model;
+
   gpu_uniform uni;
   if (gpu_get_uniform(renderer->program, view_projection_uni_name, &uni) !=
       GPU_OK)
     goto error;
   if (gpu_set_uniform_m4(uni, (float*)pv) != GPU_OK)
+    goto error;
+
+  m4_unit(&model);
+  m4_set_translation(&model, (v3){.x = position.x, .y = position.y, .z = 0.0f});
+  m4_set_scale(&model,
+               (v3){.x = sprite->size.x, .y = sprite->size.y, .z = 1.0f});
+
+  if (gpu_get_uniform(renderer->program, model_uni_name, &uni) != GPU_OK)
+    goto error;
+  if (gpu_set_uniform_m4(uni, (float*)model.data) != GPU_OK)
     goto error;
 
   gpu_texture_bind(&renderer->textures[sprite->tex_id].texture,
