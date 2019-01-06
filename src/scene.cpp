@@ -19,9 +19,11 @@ void scene_init(struct scene* scene, struct window* window) {
 
 void scene_load_from_file(struct scene* scene, struct renderer* renderer,
                           struct window* window, const char* path) {
-  std::string pstr{"data/images/panda.png"};
-  texture_id tid = renderer_request_texture(renderer, &pstr);
-  scene->nodes.push_back((node){(v2){}, tid, "Panda"});
+  struct sprite spr;
+  sprite_from_image(&spr, renderer, "data/images/panda.png",
+                    (v2){.x = 2.0f, .y = 2.0f});
+
+  scene->nodes.push_back((node){(v2){}, spr, "Panda"});
 
   cam_2d_init(&scene->camera, (v2){.x = 0.0f, .y = 0.0f}, window->width,
               window->height, 0.0f, 10.0f);
@@ -48,7 +50,8 @@ void scene_draw(struct scene* scene, struct renderer* renderer) {
   m4 cam_view_proj;
   cam_2d_view_projection(&scene->camera, &cam_view_proj);
   for (uint32_t ni = 0; ni < scene->nodes.size(); ++ni) {
-    renderer_draw_sprite(renderer, &cam_view_proj, scene->nodes[ni].tex_id,
-                         scene->nodes[ni].position);
+    struct node* node = &scene->nodes[ni];
+    renderer_draw_sprite(renderer, &node->sprite, node->position,
+                         &cam_view_proj);
   }
 }

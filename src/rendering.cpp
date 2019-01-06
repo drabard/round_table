@@ -51,6 +51,15 @@ static float quad_vertices[] = {-0.5, -0.5, 0.0f, 0.0f, 0.0f, 0.5,  -0.5,
 
 static uint32_t quad_indices[] = {0, 1, 2, 2, 3, 0};
 
+bool sprite_from_image(struct sprite* spr, struct renderer* renderer,
+                       const char* path, v2 size) {
+  spr->size = size;
+  std::string pstr{path};
+  spr->tex_id = renderer_request_texture(renderer, &pstr);
+
+  return true;
+}
+
 bool renderer_init(struct renderer* renderer) {
   *renderer = (struct renderer){};
   renderer->textures_freelist = INVALID_TID;
@@ -140,8 +149,8 @@ void renderer_release_texture(struct renderer* renderer, texture_id id) {
   }
 }
 
-void renderer_draw_sprite(struct renderer* renderer, const m4* pv,
-                          texture_id tex_id, v2 position) {
+void renderer_draw_sprite(struct renderer* renderer, struct sprite* sprite,
+                          v2 position, const m4* pv) {
   gpu_activate_program(renderer->program);
 
   gpu_uniform uni;
@@ -151,8 +160,8 @@ void renderer_draw_sprite(struct renderer* renderer, const m4* pv,
   if (gpu_set_uniform_m4(uni, (float*)pv) != GPU_OK)
     goto error;
 
-  gpu_texture_bind(&renderer->textures[tex_id].texture, &renderer->program, 1,
-                   0, tex_sampler_name);
+  gpu_texture_bind(&renderer->textures[sprite->tex_id].texture,
+                   &renderer->program, 1, 0, tex_sampler_name);
   gpu_vertex_buffer_draw(&renderer->quad_vb);
 
   return;

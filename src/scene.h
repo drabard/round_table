@@ -12,7 +12,7 @@
 
 struct node {
   v2 position;
-  texture_id tex_id;
+  struct sprite sprite;
   std::string name;
 };
 
