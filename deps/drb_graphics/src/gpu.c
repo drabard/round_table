@@ -267,7 +267,7 @@ enum gpu_status gpu_vertex_buffer_create(struct gpu_vertex_buffer* buf, const vo
     if ((vert_flags & GPU_NORM) != 0)
         vert_nbytes += (3 * sizeof(float));
     if ((vert_flags & GPU_TEXCOORD) != 0)
-        vert_nbytes += (3 * sizeof(float));
+        vert_nbytes += (2 * sizeof(float));
 
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vb);
@@ -281,27 +281,27 @@ enum gpu_status gpu_vertex_buffer_create(struct gpu_vertex_buffer* buf, const vo
     if (check_gl_errors("glBufferData") != GL_NO_ERROR)
         goto error;
 
-    float* stride = NULL;
+    float* offset = NULL;
 
     // 0: positions
     if ((vert_flags & GPU_POS) != 0) {
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, vert_nbytes, 0);
-        stride += 3;
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, vert_nbytes, offset);
+        offset += 3;
     }
 
     // 1: normals
     if ((vert_flags & GPU_NORM) != 0) {
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, vert_nbytes, stride);
-        stride += 3;
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, vert_nbytes, offset);
+        offset += 3;
     }
 
     // 2: texture coordinates
     if ((vert_flags & GPU_TEXCOORD) != 0) {
         glEnableVertexAttribArray(2);
-        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, vert_nbytes, stride);
-        stride += 3;
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, vert_nbytes, offset);
+        offset += 2;
     }
 
     if (check_gl_errors("defining vertex attribute pointers") != GL_NO_ERROR)
