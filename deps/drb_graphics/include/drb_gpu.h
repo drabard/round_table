@@ -17,7 +17,7 @@ enum gpu_status { GPU_OK = 0,
                   GPU_FAILURE };
 
 enum gpu_vertex_flags {
-    GPU_POS = (1 << 0), // positions; size: 4 * sizeof(float)
+    GPU_POS = (1 << 0), // positions; size: 3 * sizeof(float)
     GPU_NORM = (1 << 1), // normals; size: 3 * sizeof(float)
     GPU_TEXCOORD = (1 << 2) // texture coords; size: 2 * sizeof(float)
 };
