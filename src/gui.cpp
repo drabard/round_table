@@ -21,6 +21,11 @@ void gui_init(struct window* window) {
   io.Fonts->GetTexDataAsRGBA32(&tex_pixels, &tex_w, &tex_h);
 }
 
+bool gui_wants_input() {
+  ImGuiIO& io = ImGui::GetIO();
+  return io.WantCaptureMouse || io.WantCaptureKeyboard;
+}
+
 void gui_shutdown() {
   ImGui_ImplOpenGL3_Shutdown();
   ImGui_ImplGlfw_Shutdown();

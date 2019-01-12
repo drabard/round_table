@@ -12,11 +12,19 @@
 	"buffers":
 	[
 		{
-			"file": "deps/drb_graphics/include/drb_camera.h",
+			"file": "src/input.h",
 			"settings":
 			{
-				"buffer_size": 834,
+				"buffer_size": 604,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/window.h",
+			"settings":
+			{
+				"buffer_size": 399,
 				"line_ending": "Unix"
 			}
 		},
@@ -24,60 +32,24 @@
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 1059,
+				"buffer_size": 1301,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "build.sh",
+			"settings":
+			{
+				"buffer_size": 612,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/scene.h",
+			"file": "src/input.cpp",
 			"settings":
 			{
-				"buffer_size": 631,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "deps/drb_graphics/src/camera.c",
-			"settings":
-			{
-				"buffer_size": 1812,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/scene.cpp",
-			"settings":
-			{
-				"buffer_size": 1531,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/drabard/code/demo_framework/demo/src/demo.cpp",
-			"settings":
-			{
-				"buffer_size": 7642,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/rendering.h",
-			"settings":
-			{
-				"buffer_size": 1091,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/rendering.cpp",
-			"settings":
-			{
-				"buffer_size": 4995,
+				"buffer_size": 3247,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -163,27 +135,29 @@
 	],
 	"file_history":
 	[
-		"/home/drabard/code/demo_framework/src/camera.c",
-		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_math.h",
-		"/home/drabard/code/round_table/src/rendering.h",
 		"/home/drabard/code/round_table/src/window.h",
-		"/home/drabard/code/round_table/src/scene.cpp",
-		"/home/drabard/code/round_table/src/gui.cpp",
 		"/home/drabard/code/round_table/src/scene.h",
-		"/home/drabard/code/round_table/src/main.cpp",
-		"/home/drabard/code/round_table/deps/drb_graphics/src/math.c",
-		"/home/drabard/code/round_table/.clang-format",
-		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_camera.h",
+		"/home/drabard/code/round_table/src/scene.cpp",
+		"/home/drabard/code/round_table/src/rendering.h",
 		"/home/drabard/code/round_table/src/rendering.cpp",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/camera.c",
+		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_camera.h",
 		"/home/drabard/code/round_table/build.sh",
-		"/home/drabard/code/round_table/deps/drb_graphics/src/gpu.c",
+		"/home/drabard/code/round_table/src/main.cpp",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/graphics.c",
+		"/home/drabard/code/round_table/deps/drb_graphics/src/gpu.c",
+		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_gpu.h",
+		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_graphics.h",
+		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_math.h",
+		"/home/drabard/code/round_table/deps/drb_graphics/build.sh",
+		"/home/drabard/code/demo_framework/demo/src/demo.cpp",
+		"/home/drabard/code/demo_framework/src/camera.c",
+		"/home/drabard/code/round_table/src/gui.cpp",
+		"/home/drabard/code/round_table/deps/drb_graphics/src/math.c",
+		"/home/drabard/code/round_table/.clang-format",
 		"/home/drabard/code/round_table/src/stb_image.h",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/imvis.c",
-		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_gpu.h",
 		"/home/drabard/code/round_table/src/window.cpp",
-		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_graphics.h",
 		"/home/drabard/code/game00/res/shaders/basic.fs",
 		"/home/drabard/code/game00/res/shaders/basic.vs",
 		"/home/drabard/code/round_table/src/stb_image.cpp",
@@ -204,7 +178,6 @@
 		"/home/drabard/code/demo_framework/src/graphics.h",
 		"/home/drabard/code/demo_framework/demo/src/array.cpp.tmpl",
 		"/home/drabard/code/demo_framework/demo/src/array.h.tmpl",
-		"/home/drabard/code/demo_framework/demo/src/demo.cpp",
 		"/home/drabard/code/demo_framework/demo/src/demo.h",
 		"/home/drabard/code/round_table/round_table.sublime-project",
 		"/home/drabard/code/round_table/src/gui.h",
@@ -287,6 +260,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"input_state",
+			"spr",
+			"view_projection",
+			"gpu_vtx_flags_t",
+			"vertex_flags",
+			"stride",
+			"view_projection_uni_name",
+			"view_proje",
+			"view_projection",
 			",\n",
 			"PointerAlignment",
 			"*m4_at",
@@ -334,6 +316,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"input",
+			"offset",
 			"m4_at",
 			"m4_at(",
 			"m4_at",
@@ -359,146 +343,31 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "deps/drb_graphics/include/drb_camera.h",
+					"file": "src/input.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 834,
+						"buffer_size": 604,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								790,
-								790
+								603,
+								603
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/main.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1059,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								575,
-								575
-							]
-						],
-						"settings":
-						{
+							"history_list_is_closing": true,
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/scene.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 631,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								330,
-								330
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "deps/drb_graphics/src/camera.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1812,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1629,
-								1629
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 161.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/scene.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1531,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1194,
-								1194
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -509,49 +378,48 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "/home/drabard/code/demo_framework/demo/src/demo.cpp",
+					"buffer": 1,
+					"file": "src/window.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7642,
+						"buffer_size": 399,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1565,
-								1565
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 606.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "src/rendering.h",
+					"buffer": 2,
+					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1091,
+						"buffer_size": 1301,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								947,
-								947
+								1057,
+								1057
 							]
 						],
 						"settings":
@@ -564,37 +432,104 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "src/rendering.cpp",
+					"buffer": 3,
+					"file": "build.sh",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4995,
+						"buffer_size": 612,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4527,
-								4527
+								376,
+								376
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Bash.sublime-syntax",
+							"tab_size": 6,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "src/input.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3085,
+								3085
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1781.0,
+						"translation.y": 176.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 0,
+					"file": "src/input.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 604,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -617,11 +552,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -643,7 +585,7 @@
 	"project": "round_table.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 68.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -653,8 +595,24 @@
 		"selected_items":
 		[
 			[
+				"input.h",
+				"src/input.h"
+			],
+			[
+				"window.h",
+				"src/window.h"
+			],
+			[
 				"main.cpp",
 				"src/main.cpp"
+			],
+			[
+				"build.sh",
+				"build.sh"
+			],
+			[
+				"input.cpp",
+				"src/input.cpp"
 			],
 			[
 				"scene.h",
@@ -665,72 +623,88 @@
 				"src/rendering.cpp"
 			],
 			[
-				"camera.c",
-				"deps/drb_graphics/src/camera.c"
-			],
-			[
-				"drb_camera.h",
-				"deps/drb_graphics/include/drb_camera.h"
-			],
-			[
-				"drb_math",
-				"deps/drb_graphics/include/drb_math.h"
+				"scene.cpp",
+				"src/scene.cpp"
 			],
 			[
 				"rendering.h",
 				"src/rendering.h"
 			],
 			[
-				"scene.cpp",
-				"src/scene.cpp"
-			],
-			[
-				"math.h",
-				"deps/drb_graphics/include/drb_math.h"
-			],
-			[
-				"window.h",
-				"src/window.h"
-			],
-			[
-				"gui.cpp",
-				"src/gui.cpp"
+				"camera.c",
+				"deps/drb_graphics/src/camera.c"
 			],
 			[
 				"camera.h",
 				"deps/drb_graphics/include/drb_camera.h"
 			],
 			[
-				"math.c",
-				"deps/drb_graphics/src/math.c"
+				"drb_camera.h",
+				"deps/drb_graphics/include/drb_camera.h"
 			],
 			[
 				"drb_math.h",
 				"deps/drb_graphics/include/drb_math.h"
 			],
 			[
+				"gpu.c",
+				"deps/drb_graphics/src/gpu.c"
+			],
+			[
 				"graphics.c",
 				"deps/drb_graphics/src/graphics.c"
+			],
+			[
+				"deps/drb",
+				"deps/drb_graphics/build.sh"
+			],
+			[
+				"gpu.h",
+				"deps/drb_graphics/include/drb_gpu.h"
+			],
+			[
+				"drb_gpu.c",
+				"deps/drb_graphics/src/gpu.c"
+			],
+			[
+				"drb_gpu",
+				"deps/drb_graphics/include/drb_gpu.h"
+			],
+			[
+				"drb_graphics.h",
+				"deps/drb_graphics/include/drb_graphics.h"
+			],
+			[
+				"drb_gpu.h",
+				"deps/drb_graphics/include/drb_gpu.h"
+			],
+			[
+				"rend",
+				"src/rendering.cpp"
+			],
+			[
+				"drb_math",
+				"deps/drb_graphics/include/drb_math.h"
+			],
+			[
+				"math.h",
+				"deps/drb_graphics/include/drb_math.h"
+			],
+			[
+				"gui.cpp",
+				"src/gui.cpp"
+			],
+			[
+				"math.c",
+				"deps/drb_graphics/src/math.c"
 			],
 			[
 				"stb_image.h",
 				"src/stb_image.h"
 			],
 			[
-				"build.sh",
-				"build.sh"
-			],
-			[
-				"gpu.c",
-				"deps/drb_graphics/src/gpu.c"
-			],
-			[
 				"scene",
 				"src/scene.cpp"
-			],
-			[
-				"gpu.h",
-				"deps/drb_graphics/include/drb_gpu.h"
 			],
 			[
 				"window.cpp",
@@ -741,16 +715,8 @@
 				"deps/drb_graphics/src/imvis.c"
 			],
 			[
-				"drb_graphics.h",
-				"deps/drb_graphics/include/drb_graphics.h"
-			],
-			[
 				"bui",
 				"build.sh"
-			],
-			[
-				"drb_gpu.h",
-				"deps/drb_graphics/include/drb_gpu.h"
 			],
 			[
 				"drb_graphics",
@@ -1051,7 +1017,7 @@
 	"select_symbol":
 	{
 		"height": 392.0,
-		"last_filter": "size_t",
+		"last_filter": "",
 		"selected_items":
 		[
 			[

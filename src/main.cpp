@@ -38,10 +38,12 @@ int main(int argc, char** argv) {
     renderer_process_gui(&renderer);
     input_update_mouse_position(&window, &input);
 
-    if (input.mouse_left_pressed)
-      printf("LMB pressed\n");
-    if (input.w_pressed)
-      printf("W pressed\n");
+    if (!gui_wants_input()) {
+      if (input.mouse_left_pressed)
+        printf("LMB pressed\n");
+      if (input.w_pressed)
+        printf("W pressed\n");
+    }
 
     gfx_clear_screen((v3){.x = 0.0f, .y = 0.0f, .z = 0.0f});
     scene_draw(&scene, &renderer);
