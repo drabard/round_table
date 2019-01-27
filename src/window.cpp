@@ -47,3 +47,5 @@ void window_swap_buffers(struct window* window) {
 bool window_should_close(struct window* window) {
   return glfwWindowShouldClose(window->glfw_win);
 }
+
+float window_get_time(struct window* window) { return glfwGetTime(); }

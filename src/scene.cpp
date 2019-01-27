@@ -3,6 +3,7 @@
 #include <imgui.h>
 
 #include "drb_camera.h"
+#include "input.h"
 #include "rendering.h"
 #include "window.h"
 
@@ -44,6 +45,21 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
     }
   }
   ImGui::End();
+}
+
+void scene_process_input(float dt, struct scene* scene, struct input* input) {
+  const float NODE_SPEED = 10.0f;
+  for (uint32_t i = 0; i < scene->nodes.size(); ++i) {
+    struct node* n = &scene->nodes[i];
+    if (input->w_pressed)
+      n->position.y += dt * NODE_SPEED;
+    if (input->s_pressed)
+      n->position.y -= dt * NODE_SPEED;
+    if (input->d_pressed)
+      n->position.x += dt * NODE_SPEED;
+    if (input->a_pressed)
+      n->position.x -= dt * NODE_SPEED;
+  }
 }
 
 void scene_draw(struct scene* scene, struct renderer* renderer) {

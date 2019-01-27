@@ -21,18 +21,65 @@
 			}
 		},
 		{
-			"file": "src/window.h",
+			"contents": "karty\n1. historia, lata minione - zlodziej\n\tto czego szuka, znajduje sie na skrzyzowaniu drogi zycia i smierci, miedzy pochowanymi (cmentarz)\n2. guild member - siły dobra i ochrony, święty symbol wielkiej nadziei\n\tciemny pokój pełen butelek - grobowiec członka gildii\n3. zakapturzony - potęga i prawdziwa siła, potęzna broń zniszczenia, miecz wykuty ze słońca\n\tbóg bez twarzy czeka na was na końcu długiej i kretej drogi, głęboko w górach\n\t(posąg bez głowy!)\n4. donjon - szukajcie młodego człowieka, otoczonego bogactwem i szaleństwem. jego dom jest jego \twięzieniem (sprzymierzeniec)\n5. wróg - czai się głęboko w ciemności, w miejscu do którego musi wracać.\n\nZapamiętajcie jaki hołd złożyły wam karty i złóżcie dar matce nocy za jej moc jasnowidzenia.",
 			"settings":
 			{
-				"buffer_size": 399,
+				"buffer_size": 752,
+				"line_ending": "Unix",
+				"name": "karty"
+			}
+		},
+		{
+			"contents": "#pragma once\t\n\nstruct GLFWwindow;\n\nstruct window {\n  GLFWwindow* glfw_win;\n\n  float x;\n  float y;\n  float width;\n  float height;\n};\n\nbool window_create(struct window* window, const char* title, float x, float y,\n                   float width, float height);\nbool window_should_close(struct window* window);\nvoid window_swap_buffers(struct window* window);\nvoid window_destroy(struct window* window);\t",
+			"file": "src/window.h",
+			"file_size": 399,
+			"file_write_time": 131911883885498127,
+			"settings":
+			{
+				"buffer_size": 401,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/drabard/notes/majhima_nikaya_lectures/mn7_cloth_16_defilements.md",
+			"settings":
+			{
+				"buffer_size": 3078,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/drabard/notes/rpg/Linus Ramo",
+			"settings":
+			{
+				"buffer_size": 799,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "Linus Ramo"
 			}
 		},
 		{
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 1301,
+				"buffer_size": 1345,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "deps/imgui-1.65/imgui_impl_opengl3.cpp",
+			"settings":
+			{
+				"buffer_size": 23501,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "deps/imgui-1.65/imgui_impl_glfw.cpp",
+			"settings":
+			{
+				"buffer_size": 13779,
 				"line_ending": "Unix"
 			}
 		},
@@ -46,10 +93,18 @@
 			}
 		},
 		{
-			"file": "src/input.cpp",
+			"file": "deps/imgui-1.65/imgui.h",
 			"settings":
 			{
-				"buffer_size": 3247,
+				"buffer_size": 188815,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/gui.h",
+			"settings":
+			{
+				"buffer_size": 170,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -135,6 +190,12 @@
 	],
 	"file_history":
 	[
+		"/home/drabard/notes/majhima_nikaya_lectures/mn7.md",
+		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.cpp",
+		"/home/drabard/code/round_table/src/gui.cpp",
+		"/home/drabard/code/round_table/src/input.cpp",
+		"/home/drabard/code/round_table/src/input.h",
+		"/home/drabard/code/round_table/src/gui.h",
 		"/home/drabard/code/round_table/src/window.h",
 		"/home/drabard/code/round_table/src/scene.h",
 		"/home/drabard/code/round_table/src/scene.cpp",
@@ -152,7 +213,6 @@
 		"/home/drabard/code/round_table/deps/drb_graphics/build.sh",
 		"/home/drabard/code/demo_framework/demo/src/demo.cpp",
 		"/home/drabard/code/demo_framework/src/camera.c",
-		"/home/drabard/code/round_table/src/gui.cpp",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/math.c",
 		"/home/drabard/code/round_table/.clang-format",
 		"/home/drabard/code/round_table/src/stb_image.h",
@@ -180,7 +240,6 @@
 		"/home/drabard/code/demo_framework/demo/src/array.h.tmpl",
 		"/home/drabard/code/demo_framework/demo/src/demo.h",
 		"/home/drabard/code/round_table/round_table.sublime-project",
-		"/home/drabard/code/round_table/src/gui.h",
 		"/home/drabard/code/demo_framework/build_demo.sh",
 		"/home/drabard/code/demo_framework/demo/src/main.cpp",
 		"/home/drabard/code/round_table/src/main.c",
@@ -200,7 +259,6 @@
 		"/home/drabard/notes/projects.md",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn2.md",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn6.md",
-		"/home/drabard/notes/majhima_nikaya_lectures/mn7.md",
 		"/home/drabard/Dokumenty/suttas",
 		"/home/drabard/notes/majhima_nikaya_lectures.md",
 		"/home/drabard/notes/meditation.md",
@@ -245,7 +303,7 @@
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -260,6 +318,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Input",
+			"input",
+			"io",
+			"ImGuiIO",
 			"input_state",
 			"spr",
 			"view_projection",
@@ -343,7 +405,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -359,44 +421,44 @@
 						"selection":
 						[
 							[
-								603,
-								603
+								604,
+								604
 							]
 						],
 						"settings":
 						{
 							"history_list_is_closing": true,
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/window.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 399,
+						"buffer_size": 752,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								141,
+								141
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"auto_name": "karty",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -407,19 +469,105 @@
 				},
 				{
 					"buffer": 2,
-					"file": "src/main.cpp",
+					"file": "src/window.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1301,
+						"buffer_size": 401,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1057,
-								1057
+								401,
+								401
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/drabard/notes/majhima_nikaya_lectures/mn7_cloth_16_defilements.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2824,
+								2824
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 80.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/drabard/notes/rpg/Linus Ramo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								339,
+								339
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Linus Ramo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								723,
+								723
 							]
 						],
 						"settings":
@@ -432,11 +580,71 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 6,
+					"file": "deps/imgui-1.65/imgui_impl_opengl3.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4713,
+								4713
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1320.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "deps/imgui-1.65/imgui_impl_glfw.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13779,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9326,
+								9326
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2690.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "build.sh",
 					"semi_transient": false,
 					"settings":
@@ -462,7 +670,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -472,50 +680,20 @@
 			"sheets":
 			[
 				{
-					"buffer": 4,
-					"file": "src/input.cpp",
+					"buffer": 9,
+					"file": "deps/imgui-1.65/imgui.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3247,
+						"buffer_size": 188815,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3085,
-								3085
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 176.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 0,
-					"file": "src/input.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 604,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								122496,
+								122496
 							]
 						],
 						"settings":
@@ -526,10 +704,39 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 17400.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/gui.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 170,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								170,
+								170
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -585,7 +792,7 @@
 	"project": "round_table.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -594,6 +801,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"gui.cpp",
+				"src/gui.cpp"
+			],
+			[
+				"gui.h",
+				"src/gui.h"
+			],
+			[
+				"imgui.h",
+				"deps/imgui-1.65/imgui.h"
+			],
+			[
+				"imgui.cpp",
+				"deps/imgui-1.65/imgui.cpp"
+			],
 			[
 				"input.h",
 				"src/input.h"
@@ -691,10 +914,6 @@
 				"deps/drb_graphics/include/drb_math.h"
 			],
 			[
-				"gui.cpp",
-				"src/gui.cpp"
-			],
-			[
 				"math.c",
 				"deps/drb_graphics/src/math.c"
 			],
@@ -725,10 +944,6 @@
 			[
 				"graphics.h",
 				"deps/drb_graphics/include/drb_graphics.h"
-			],
-			[
-				"imgui.h",
-				"deps/imgui-1.65/imgui.h"
 			],
 			[
 				"",
@@ -1016,10 +1231,26 @@
 	},
 	"select_symbol":
 	{
-		"height": 392.0,
-		"last_filter": "",
+		"height": 65.0,
+		"last_filter": "ImGui_ImplGlfw_New",
 		"selected_items":
 		[
+			[
+				"ImGui_ImplGlfw_New",
+				"ImGui_ImplGlfw_NewFrame"
+			],
+			[
+				"ImGui_ImplOPENG",
+				"ImGui_ImplOpenGL3_NewFrame"
+			],
+			[
+				"ImGuiImplGlfw",
+				"ImGui_ImplGlfw_Init"
+			],
+			[
+				"ImGuiIO",
+				"ImGuiIO"
+			],
 			[
 				"size_t",
 				"size_t"
@@ -1031,7 +1262,7 @@
 		],
 		"width": 592.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

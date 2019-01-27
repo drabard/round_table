@@ -27,11 +27,11 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-  // float prev_time = glfwGetTime();
+  float prev_time = window_get_time(&window);
   while (!window_should_close(&window)) {
-    // float time = glfwGetTime();
-    // float dt = time - prev_time;
-    // prev_time = time;
+    float time = window_get_time(&window);
+    float dt = time - prev_time;
+    prev_time = time;
 
     gui_prepare(&window);
     scene_process_gui(&scene, &renderer, &window);
@@ -44,6 +44,8 @@ int main(int argc, char** argv) {
       if (input.w_pressed)
         printf("W pressed\n");
     }
+
+    scene_process_input(dt, &scene, &input);
 
     gfx_clear_screen((v3){.x = 0.0f, .y = 0.0f, .z = 0.0f});
     scene_draw(&scene, &renderer);
