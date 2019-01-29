@@ -4,6 +4,7 @@
 
 #include "gui.h"
 #include "input.h"
+#include "network.h"
 #include "scene.h"
 #include "window.h"
 
@@ -27,6 +28,9 @@ int main(int argc, char** argv) {
     return 1;
   }
 
+  struct net net;
+  net_init(&net);
+
   float prev_time = window_get_time(&window);
   while (!window_should_close(&window)) {
     float time = window_get_time(&window);
@@ -36,6 +40,7 @@ int main(int argc, char** argv) {
     gui_prepare(&window);
     scene_process_gui(&scene, &renderer, &window);
     renderer_process_gui(&renderer);
+    net_process_gui(&net);
     input_update_mouse_position(&window, &input);
 
     if (!gui_wants_input()) {
@@ -46,6 +51,8 @@ int main(int argc, char** argv) {
     }
 
     scene_process_input(dt, &scene, &input);
+
+    net_update(&net);
 
     gfx_clear_screen((v3){.x = 0.0f, .y = 0.0f, .z = 0.0f});
     scene_draw(&scene, &renderer);
