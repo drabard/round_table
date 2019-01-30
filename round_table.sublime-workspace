@@ -11,6 +11,24 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/network.cpp",
+			"settings":
+			{
+				"buffer_size": 893,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/network.h",
+			"settings":
+			{
+				"buffer_size": 137,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Script",
 	"build_system_choices":
@@ -92,6 +110,7 @@
 	],
 	"file_history":
 	[
+		"/home/drabard/notes/rpg/curse_of_strahd_karty",
 		"/home/drabard/code/round_table/src/scene.h",
 		"/home/drabard/code/round_table/src/window.cpp",
 		"/home/drabard/code/round_table/src/window.h",
@@ -103,7 +122,6 @@
 		"/home/drabard/code/round_table/src/network.cpp",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui_impl_glfw.cpp",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui_impl_opengl3.cpp",
-		"/home/drabard/notes/rpg/curse_of_strahd_karty",
 		"/home/drabard/code/round_table/src/gui.h",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn7_cloth_16_defilements.md",
 		"/home/drabard/notes/rpg/Linus Ramo",
@@ -212,7 +230,7 @@
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -315,8 +333,67 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/network.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 893,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								316,
+								316
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/network.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 137,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13,
+								13
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -373,16 +450,20 @@
 		"selected_items":
 		[
 			[
+				"network.h",
+				"src/network.h"
+			],
+			[
+				"network.cpp",
+				"src/network.cpp"
+			],
+			[
 				"build",
 				"build.sh"
 			],
 			[
 				"build.sh",
 				"build.sh"
-			],
-			[
-				"network.h",
-				"src/network.h"
 			],
 			[
 				"window.cpp",
@@ -801,12 +882,16 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"~/code/round_table/round_table.sublime-project"
+			]
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{

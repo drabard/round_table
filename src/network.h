@@ -2,7 +2,6 @@
 
 struct net {
   int socket;
-  bool is_server;
 };
 
 void net_init(struct net*);
