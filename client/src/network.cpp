@@ -7,27 +7,48 @@
 
 #include "sys/socket.h"
 
-void net_init(struct net* net) { net->socket = -1; }
+#define SERVER_STR_SIZE 128
+
+bool net_init(struct net* net) {
+  net->socket = socket(AF_INET, SOCK_DGRAM, 0);
+  if (net->socket <= 0) {
+    fprintf(stderr, "ERROR: Couldn't create socket.\n");
+    return false;
+  }
+  return true;
+}
 
 void net_process_gui(struct net* net) {
-  ImGui::Begin("Network debug");
-  ImGui::Text("Socket: %d", net->socket);
-  if (ImGui::Button("Init socket")) {
-    net->socket = socket(AF_INET, SOCK_DGRAM, 0);
-    if (net->socket <= 0) {
-      fprintf(stderr, "Couldn't create socket.");
+  ImGui::Begin("Connection");
+  //      IMGUI_API bool          InputText(const char* label, char* buf, size_t
+  //      buf_size, ImGuiInputTextFlags flags = 0, ImGuiInputTextCallback
+  //      callback = NULL, void* user_data = NULL);
+  static char server_str[SERVER_STR_SIZE];
+  static int port;
+  struct sockaddr_in* server_addr = &net->server_addr;
+
+  ImGui::InputText("server", server_str, SERVER_STR_SIZE);
+  ImGui::InputInt("port", &port);
+  if (ImGui::Button("Connect")) {
+    server_addr->sin_family = AF_INET;
+    server_addr->sin_port = htons(port);
+    if (inet_pton(AF_INET, server_str, &server_addr->sin_addr) <= 0) {
+      ImGui::OpenPopup("errpopup");
+    } else {
     }
   }
-  if (ImGui::Button("Send test message")) {
-    struct sockaddr_in client_addr;
-    client_addr.sin_family = AF_INET;
-    client_addr.sin_port = htons(1234);
-    inet_pton(AF_INET, "127.0.0.1", &client_addr.sin_addr);
 
+  if (ImGui::BeginPopup("errpopup")) {
+    ImGui::Text("Invalid server address and/or port.");
+    ImGui::EndPopup();
+  }
+
+  if (ImGui::Button("Send test message")) {
     const char test[] = "test message\n";
     sendto(net->socket, test, sizeof(test), 0,
-           (const struct sockaddr*)&client_addr, sizeof(client_addr));
+           (const struct sockaddr*)server_addr, sizeof(*server_addr));
   }
+
   ImGui::End();
 }
 

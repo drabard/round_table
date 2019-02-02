@@ -24,12 +24,14 @@ int main(int argc, char** argv) {
 
   struct renderer renderer;
   if (!renderer_init(&renderer)) {
-    fprintf(stderr, "ERROR: Failed to initialize renderer.");
+    fprintf(stderr, "ERROR: Failed to initialize renderer.\n");
     return 1;
   }
 
   struct net net;
-  net_init(&net);
+  if (!net_init(&net)) {
+    fprintf(stderr, "ERROR: Failed to initialize network.\n");
+  }
 
   float prev_time = window_get_time(&window);
   while (!window_should_close(&window)) {
