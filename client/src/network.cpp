@@ -4,6 +4,7 @@
 
 #include <arpa/inet.h>
 #include <imgui.h>
+#include <unistd.h>
 
 #include "sys/socket.h"
 
@@ -20,9 +21,7 @@ bool net_init(struct net* net) {
 
 void net_process_gui(struct net* net) {
   ImGui::Begin("Connection");
-  //      IMGUI_API bool          InputText(const char* label, char* buf, size_t
-  //      buf_size, ImGuiInputTextFlags flags = 0, ImGuiInputTextCallback
-  //      callback = NULL, void* user_data = NULL);
+
   static char server_str[SERVER_STR_SIZE];
   static int port;
   struct sockaddr_in* server_addr = &net->server_addr;
@@ -33,14 +32,18 @@ void net_process_gui(struct net* net) {
     server_addr->sin_family = AF_INET;
     server_addr->sin_port = htons(port);
     if (inet_pton(AF_INET, server_str, &server_addr->sin_addr) <= 0) {
-      ImGui::OpenPopup("errpopup");
-    } else {
+      ImGui::OpenPopup("connerrpopup");
     }
   }
 
-  if (ImGui::BeginPopup("errpopup")) {
+  if (ImGui::BeginPopup("connerrpopup")) {
     ImGui::Text("Invalid server address and/or port.");
     ImGui::EndPopup();
+  }
+
+  if (ImGui::Button("Disconnect")) {
+    close(net->socket);
+    net->socket = -1;
   }
 
   if (ImGui::Button("Send test message")) {
