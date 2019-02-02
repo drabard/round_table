@@ -3,7 +3,7 @@
     [
         {
             "name": "Script",
-            "shell_cmd": "pushd ${project_path} && ./build.sh && popd"
+            "shell_cmd": "pushd ${project_path}/client && ./build.sh && popd && pushd ${project_path}/server && ./build.sh && popd"
         }
     ],
 	"folders":
