@@ -1,0 +1,14 @@
+{
+	"name" : "Roadside Picnic",
+	"type" : "scene",
+	"children" : [
+		{
+			"name" : "First panda",
+			"type" : "sprite",
+			"children" : [],
+			"sprite" : {
+				"path" : "../data/images/panda.png"
+			},
+		},
+	]
+}
