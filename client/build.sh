@@ -7,6 +7,7 @@ clang++ -g -std=c++11 -Wall -Werror -I../src \
       src/main.cpp \
       src/window.cpp \
       src/gui.cpp \
+      src/node.cpp \
       src/scene.cpp \
       src/rendering.cpp \
       src/input.cpp \

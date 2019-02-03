@@ -10,19 +10,7 @@
 
 #include "rendering.h"
 
-enum node_type { SPRITE_NODE };
-
-struct node {
-  std::string name;
-  v2 position;
-  enum node_type type;
-};
-void node_process_gui(struct node* node);
-
-struct sprite_node {
-  struct node node;
-  struct sprite sprite;
-};
+#include "node.h"
 
 struct scene {
   struct cam_2d camera;

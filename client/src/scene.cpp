@@ -7,11 +7,6 @@
 #include "rendering.h"
 #include "window.h"
 
-void node_process_gui(struct node* node) {
-  ImGui::Text("%s: %f, %f", node->name.c_str(), node->position.x,
-              node->position.y);
-}
-
 void scene_init(struct scene* scene, struct window* window) {
   *scene = (struct scene){};
   cam_2d_init(&scene->camera, (v2){.x = 0.0f, .y = 0.0f}, window->width,
@@ -21,7 +16,7 @@ void scene_init(struct scene* scene, struct window* window) {
 void scene_load_from_file(struct scene* scene, struct renderer* renderer,
                           struct window* window, const char* path) {
   struct sprite spr;
-  sprite_from_image(&spr, renderer, "data/images/panda.png",
+  sprite_from_image(&spr, renderer, "../data/images/panda.png",
                     (v2){.x = 2.0f, .y = 2.0f});
 
   scene->sprite_nodes.push_back(
