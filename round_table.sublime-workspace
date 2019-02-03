@@ -11,24 +11,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/network.cpp",
-			"settings":
-			{
-				"buffer_size": 893,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/network.h",
-			"settings":
-			{
-				"buffer_size": 137,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Script",
 	"build_system_choices":
@@ -62,6 +44,10 @@
 		"selected_items":
 		[
 			[
+				"package control: install package",
+				"Package Control: Install Package"
+			],
+			[
 				"Cla",
 				"Clang Format: Format Selection"
 			],
@@ -90,7 +76,7 @@
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 136.0,
 		"history":
 		[
 		]
@@ -110,6 +96,21 @@
 	],
 	"file_history":
 	[
+		"/home/drabard/code/round_table/client/src/main.cpp",
+		"/home/drabard/code/round_table/server/src/main.cpp",
+		"/home/drabard/code/round_table/client/src/network.cpp",
+		"/home/drabard/code/round_table/client/src/network.h",
+		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.h",
+		"/home/drabard/code/demo_framework/demo/src/demo.cpp",
+		"/home/drabard/code/demo_framework/demo/src/demo_imvis.h",
+		"/home/drabard/code/demo_framework/demo/src/demo_imvis.cpp",
+		"/home/drabard/code/demo_framework/demo/src/demo_imvis.",
+		"/home/drabard/code/round_table/server/build.sh",
+		"/home/drabard/code/round_table/client/build.sh",
+		"/home/drabard/code/round_table/round_table.sublime-project",
+		"/home/drabard/code/round_table/build.sh",
+		"/home/drabard/code/round_table/src/network.cpp",
+		"/home/drabard/code/round_table/src/network.h",
 		"/home/drabard/notes/rpg/curse_of_strahd_karty",
 		"/home/drabard/code/round_table/src/scene.h",
 		"/home/drabard/code/round_table/src/window.cpp",
@@ -117,15 +118,11 @@
 		"/home/drabard/code/round_table/src/scene.cpp",
 		"/home/drabard/code/round_table/src/input.h",
 		"/home/drabard/code/round_table/src/main.cpp",
-		"/home/drabard/code/round_table/build.sh",
-		"/home/drabard/code/round_table/src/network.h",
-		"/home/drabard/code/round_table/src/network.cpp",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui_impl_glfw.cpp",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui_impl_opengl3.cpp",
 		"/home/drabard/code/round_table/src/gui.h",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn7_cloth_16_defilements.md",
 		"/home/drabard/notes/rpg/Linus Ramo",
-		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.h",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn7.md",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.cpp",
 		"/home/drabard/code/round_table/src/gui.cpp",
@@ -140,7 +137,6 @@
 		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_graphics.h",
 		"/home/drabard/code/round_table/deps/drb_graphics/include/drb_math.h",
 		"/home/drabard/code/round_table/deps/drb_graphics/build.sh",
-		"/home/drabard/code/demo_framework/demo/src/demo.cpp",
 		"/home/drabard/code/demo_framework/src/camera.c",
 		"/home/drabard/code/round_table/deps/drb_graphics/src/math.c",
 		"/home/drabard/code/round_table/.clang-format",
@@ -166,7 +162,6 @@
 		"/home/drabard/code/demo_framework/demo/src/array.cpp.tmpl",
 		"/home/drabard/code/demo_framework/demo/src/array.h.tmpl",
 		"/home/drabard/code/demo_framework/demo/src/demo.h",
-		"/home/drabard/code/round_table/round_table.sublime-project",
 		"/home/drabard/code/demo_framework/build_demo.sh",
 		"/home/drabard/code/demo_framework/demo/src/main.cpp",
 		"/home/drabard/code/round_table/src/main.c",
@@ -245,6 +240,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"c_addr",
+			"  freeaddrinfo(local_addresses);\n",
+			"inet_ntop",
+			"demo->has_error",
+			"demo_error",
+			"Popup",
+			"Begin",
+			"Text(",
+			"Input",
+			"textInput",
 			"net_server_init",
 			"Input",
 			"input",
@@ -306,6 +311,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"addr",
 			"input",
 			"offset",
 			"m4_at",
@@ -333,67 +339,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/network.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 893,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								316,
-								316
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/network.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 137,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13,
-								13
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -450,19 +397,35 @@
 		"selected_items":
 		[
 			[
+				"main.cpp",
+				"server/src/main.cpp"
+			],
+			[
 				"network.h",
-				"src/network.h"
+				"client/src/network.h"
+			],
+			[
+				"demo_imvis.cpp",
+				"~/code/demo_framework/demo/src/demo_imvis.cpp"
+			],
+			[
+				"imgui.h",
+				"deps/imgui-1.65/imgui.h"
 			],
 			[
 				"network.cpp",
-				"src/network.cpp"
-			],
-			[
-				"build",
-				"build.sh"
+				"client/src/network.cpp"
 			],
 			[
 				"build.sh",
+				"server/build.sh"
+			],
+			[
+				"round",
+				"round_table.sublime-project"
+			],
+			[
+				"build",
 				"build.sh"
 			],
 			[
@@ -482,10 +445,6 @@
 				"src/input.h"
 			],
 			[
-				"main.cpp",
-				"src/main.cpp"
-			],
-			[
 				"scene.cpp",
 				"src/scene.cpp"
 			],
@@ -496,10 +455,6 @@
 			[
 				"gui.h",
 				"src/gui.h"
-			],
-			[
-				"imgui.h",
-				"deps/imgui-1.65/imgui.h"
 			],
 			[
 				"imgui.cpp",

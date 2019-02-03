@@ -10,17 +10,23 @@
 
 #include "rendering.h"
 
-struct node {
-  v2 position;
-  struct sprite sprite;
-  std::string name;
-};
+enum node_type { SPRITE_NODE };
 
+struct node {
+  std::string name;
+  v2 position;
+  enum node_type type;
+};
 void node_process_gui(struct node* node);
+
+struct sprite_node {
+  struct node node;
+  struct sprite sprite;
+};
 
 struct scene {
   struct cam_2d camera;
-  std::vector<node> nodes;
+  std::vector<sprite_node> sprite_nodes;
 };
 
 void scene_init(struct scene* scene);

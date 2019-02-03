@@ -38,16 +38,6 @@ static void print_address(struct sockaddr* addr, socklen_t addr_len) {
   printf("%s:%s\n", host_str, serv_str);
 }
 
-static void print_addresses(struct addrinfo* addresses) {
-  if (addresses == 0)
-    return;
-
-  for (struct addrinfo* c_addr = addresses; c_addr != 0;
-       c_addr = c_addr->ai_next) {
-    print_address(c_addr->ai_addr, c_addr->ai_addrlen);
-  }
-}
-
 struct server {
   int socket;
 };
@@ -102,7 +92,10 @@ int main(int argc, char** argv) {
     exit(EXIT_FAILURE);
   }
 
-  print_addresses(local_addresses);
+  for (struct addrinfo* c_addr = local_addresses; c_addr != 0;
+       c_addr = c_addr->ai_next) {
+    print_address(c_addr->ai_addr, c_addr->ai_addrlen);
+  }
 
   struct server server;
   if (!server_init(&server, local_addresses)) {
