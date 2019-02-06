@@ -7,6 +7,8 @@
 
 #include "stb_image.h"
 
+#include "log.h"
+
 static const texture_id INVALID_TID = 0xffffffff;
 
 static const char* frg_shader_src =
@@ -166,7 +168,7 @@ void renderer_draw_sprite(struct renderer* renderer, struct sprite* sprite,
   return;
 
 error:
-  fprintf(stderr, "ERROR: Failed to draw sprite.\n");
+  log_error(LOG_RENDER, "ERROR: Failed to draw sprite.\n");
 }
 
 void renderer_process_gui(struct renderer* renderer) {

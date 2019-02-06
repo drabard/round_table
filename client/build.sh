@@ -13,6 +13,8 @@ clang++ -g -std=c++11 -Wall -Werror -I../src \
       src/input.cpp \
       src/network.cpp \
       src/stb_image.cpp \
+      src/file.cpp \
+      src/log.cpp \
       ../deps/jsmn-1.0.0/jsmn.a \
       ../deps/drb_graphics/lib/libdrb_graphics.a \
       ../deps/glfw-3.2.1/lib/libglfw3.a \

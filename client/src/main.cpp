@@ -4,15 +4,23 @@
 
 #include "gui.h"
 #include "input.h"
+#include "log.h"
 #include "network.h"
 #include "scene.h"
 #include "window.h"
 
 int main(int argc, char** argv) {
+  {
+    log_enable_trace();
+    log_enable_warning();
+    log_enable_error();
+    log_enable_all_categories();
+  }
+
   struct window window;
   struct input input;
   if (!window_create(&window, "Round table", 0.0f, 0.0f, 1366.0f, 768.0f)) {
-    fprintf(stderr, "ERROR: Failed to create window.\n");
+    log_error(LOG_MAIN, "ERROR: Failed to create window.\n");
     return 1;
   }
 
@@ -24,13 +32,13 @@ int main(int argc, char** argv) {
 
   struct renderer renderer;
   if (!renderer_init(&renderer)) {
-    fprintf(stderr, "ERROR: Failed to initialize renderer.\n");
+    log_error(LOG_MAIN, "ERROR: Failed to initialize renderer.\n");
     return 1;
   }
 
   struct net net;
   if (!net_init(&net)) {
-    fprintf(stderr, "ERROR: Failed to initialize network.\n");
+    log_error(LOG_MAIN, "ERROR: Failed to initialize network.\n");
   }
 
   float prev_time = window_get_time(&window);
@@ -47,9 +55,9 @@ int main(int argc, char** argv) {
 
     if (!gui_wants_input()) {
       if (input.mouse_left_pressed)
-        printf("LMB pressed\n");
+        log_trace(LOG_INPUT, "LMB pressed\n");
       if (input.w_pressed)
-        printf("W pressed\n");
+        log_trace(LOG_INPUT, "W pressed\n");
     }
 
     scene_process_input(dt, &scene, &input);

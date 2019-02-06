@@ -3,7 +3,9 @@
 #include <imgui.h>
 
 #include "drb_camera.h"
+#include "file.h"
 #include "input.h"
+#include "log.h"
 #include "rendering.h"
 #include "window.h"
 
@@ -13,12 +15,18 @@ void scene_init(struct scene* scene, struct window* window) {
               window->height, 0.01f, 100.0f);
 }
 
-void scene_load_from_file(struct scene* scene, struct renderer* renderer,
+bool scene_load_from_file(struct scene* scene, struct renderer* renderer,
                           struct window* window, const char* path) {
+  char* buf;
+  uint32_t size;
+  if (file_load_text(path, &buf, &size) != FILE_OK)
+    goto error;
+
+  log_trace(LOG_SCENE, "Read scene file:\n%s", buf);
+
   struct sprite spr;
   sprite_from_image(&spr, renderer, "../data/images/panda.png",
                     (v2){.x = 2.0f, .y = 2.0f});
-
   scene->sprite_nodes.push_back(
       (struct sprite_node){.node = (struct node){.name = "Panda",
                                                  .position = (v2){},
@@ -27,6 +35,12 @@ void scene_load_from_file(struct scene* scene, struct renderer* renderer,
 
   cam_2d_init(&scene->camera, (v2){.x = 0.0f, .y = 0.0f}, window->width,
               window->height, 0.0f, 10.0f);
+
+  return true;
+
+error:
+  log_error(LOG_SCENE, "ERROR: Failed to load scene from file.\n");
+  return false;
 }
 
 void scene_process_gui(struct scene* scene, struct renderer* renderer,
@@ -34,7 +48,8 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
   ImGui::Begin("Scene", 0, ImGuiWindowFlags_AlwaysAutoResize);
   {
     if (ImGui::Button("Load from file")) {
-      scene_load_from_file(scene, renderer, window, "");
+      scene_load_from_file(scene, renderer, window,
+                           "../scenes/roadside_picnic.json");
     }
 
     for (uint32_t i = 0; i < scene->sprite_nodes.size(); ++i) {

@@ -1,19 +1,19 @@
 #include "network.h"
 
-#include <stdio.h>
-
 #include <arpa/inet.h>
 #include <imgui.h>
 #include <unistd.h>
 
 #include "sys/socket.h"
 
+#include "log.h"
+
 #define SERVER_STR_SIZE 128
 
 bool net_init(struct net* net) {
   net->socket = socket(AF_INET, SOCK_DGRAM, 0);
   if (net->socket <= 0) {
-    fprintf(stderr, "ERROR: Couldn't create socket.\n");
+    log_error(LOG_NETWORK, "ERROR: Couldn't create socket.\n");
     return false;
   }
   return true;
