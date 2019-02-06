@@ -54,7 +54,7 @@ void log_warning(uint32_t category, const char* fmt, ...) {
 
   va_list argp;
   va_start(argp, fmt);
-  vfprintf(stdout, fmt, argp);
+  vfprintf(stderr, fmt, argp);
   va_end(argp);
   fflush(stdout);
 }
@@ -67,7 +67,7 @@ void log_error(uint32_t category, const char* fmt, ...) {
 
   va_list argp;
   va_start(argp, fmt);
-  vfprintf(stdout, fmt, argp);
+  vfprintf(stderr, fmt, argp);
   va_end(argp);
   fflush(stdout);
 }
