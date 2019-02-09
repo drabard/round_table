@@ -12,7 +12,7 @@
 void scene_init(struct scene* scene, struct window* window) {
   *scene = (struct scene){};
   cam_2d_init(&scene->camera, (v2){.x = 0.0f, .y = 0.0f}, window->width,
-              window->height, 0.01f, 100.0f);
+              window->height, 0.0f, 10.0f);
 }
 
 bool scene_load_from_file(struct scene* scene, struct renderer* renderer,
@@ -24,23 +24,16 @@ bool scene_load_from_file(struct scene* scene, struct renderer* renderer,
 
   log_trace(LOG_SCENE, "Read scene file:\n%s", buf);
 
-  struct sprite spr;
-  sprite_from_image(&spr, renderer, "../data/images/panda.png",
-                    (v2){.x = 2.0f, .y = 2.0f});
-  scene->sprite_nodes.push_back(
-      (struct sprite_node){.node = (struct node){.name = "Panda",
-                                                 .position = (v2){},
-                                                 .type = SPRITE_NODE},
-                           .sprite = spr});
-
-  cam_2d_init(&scene->camera, (v2){.x = 0.0f, .y = 0.0f}, window->width,
-              window->height, 0.0f, 10.0f);
-
   return true;
 
 error:
   log_error(LOG_SCENE, "ERROR: Failed to load scene from file.\n");
   return false;
+}
+
+struct sprite_node* scene_add_sprite_node(struct scene* scene) {
+  scene->sprite_nodes.emplace_back();
+  return &scene->sprite_nodes.back();
 }
 
 void scene_process_gui(struct scene* scene, struct renderer* renderer,
@@ -50,6 +43,13 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
     if (ImGui::Button("Load from file")) {
       scene_load_from_file(scene, renderer, window,
                            "../scenes/roadside_picnic.json");
+    }
+
+    if (ImGui::Button("Add panda")) {
+      struct sprite_node* sn = scene_add_sprite_node(scene);
+      node_init(&sn->node, "Panda", (v2){}, SPRITE_NODE);
+      sprite_from_image(&sn->sprite, renderer, "../data/images/panda.png",
+                        (v2){.x = 2.0f, .y = 2.0f});
     }
 
     for (uint32_t i = 0; i < scene->sprite_nodes.size(); ++i) {

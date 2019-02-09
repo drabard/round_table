@@ -29,6 +29,7 @@ int main(int argc, char** argv) {
   input_init(&input, &window);
 
   struct scene scene = (struct scene){};
+  scene_init(&scene, &window);
 
   struct renderer renderer;
   if (!renderer_init(&renderer)) {

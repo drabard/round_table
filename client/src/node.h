@@ -16,6 +16,8 @@ struct node {
   enum node_type type;
 };
 
+void node_init(struct node* node, const char* name, v2 position,
+               enum node_type type);
 void node_process_gui(struct node* node);
 
 struct sprite_node {
