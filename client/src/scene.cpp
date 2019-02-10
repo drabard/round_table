@@ -40,7 +40,8 @@ struct sprite_node* scene_add_sprite_node(struct scene* scene,
     goto error;
 
   scene->sprite_nodes.emplace_back();
-  *out_id = scene->sprite_nodes.size() - 1;
+  *out_id = node_build_id(SPRITE_NODE, scene->sprite_nodes.size() - 1);
+
   return &scene->sprite_nodes.back();
 
 error:
@@ -73,9 +74,11 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
     if (ImGui::Button("Add panda")) {
       node_id_t nid;
       struct sprite_node* sn = scene_add_sprite_node(scene, &nid);
-      node_init(&sn->node, "Panda", (v2){}, SPRITE_NODE, nid);
-      sprite_from_image(&sn->sprite, renderer, "../data/images/panda.png",
-                        (v2){.x = 2.0f, .y = 2.0f});
+      if (sn) {
+        node_init(&sn->node, "Panda", (v2){}, SPRITE_NODE, nid);
+        sprite_from_image(&sn->sprite, renderer, "../data/images/panda.png",
+                          (v2){.x = 2.0f, .y = 2.0f});
+      }
     }
 
     ImGui::Separator();
@@ -98,7 +101,8 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
     if (sid != INVALID_NODE_ID) {
       struct node* sn =
           scene_get_node_by_id(scene, scene->gui.selected_node_id);
-      ImGui::Text("%s", sn->name.c_str());
+      ImGui::Text("%s (%lu, %lu)", sn->name.c_str(), GET_NODE_TYPE(sn->id),
+                  GET_NODE_IDX(sn->id));
       ImGui::InputFloat2("position", (float*)&sn->position);
     }
   }
