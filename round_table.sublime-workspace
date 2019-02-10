@@ -11,6 +11,31 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/drabard/notes/projects/current_project.md",
+			"settings":
+			{
+				"buffer_size": 1138,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/src/scene.h",
+			"settings":
+			{
+				"buffer_size": 925,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/src/scene.cpp",
+			"settings":
+			{
+				"buffer_size": 3835,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Script",
 	"build_system_choices":
@@ -96,19 +121,53 @@
 	],
 	"file_history":
 	[
+		"/home/drabard/code/round_table/client/src/scene.cpp",
+		"/home/drabard/code/round_table/client/src/node.h",
 		"/home/drabard/code/round_table/client/src/main.cpp",
-		"/home/drabard/code/round_table/server/src/main.cpp",
-		"/home/drabard/code/round_table/client/src/network.cpp",
-		"/home/drabard/code/round_table/client/src/network.h",
+		"/home/drabard/code/round_table/client/src/node.cpp",
+		"/home/drabard/code/round_table/client/src/scene.h",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.h",
+		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.cpp",
+		"/home/drabard/code/round_table/build.sh",
+		"/home/drabard/code/round_table/scripts/compile_all_templates.sh",
+		"/home/drabard/scrap/cog/array.h",
+		"/home/drabard/notes/projects/current_project.md",
+		"/home/drabard/code/round_table/client/src/log.cpp",
+		"/home/drabard/notes/inbox.md",
+		"/home/drabard/notes/infosec_plan",
+		"/home/drabard/notes/current_project.md",
+		"/home/drabard/notes/other.md",
+		"/home/drabard/notes/meditation.md",
+		"/home/drabard/notes/thoughts/mind_stickiness.md",
+		"/home/drabard/notes/thoughs/mind_stickiness.md",
+		"/home/drabard/notes/projects.md",
+		"/home/drabard/notes/project_ideas.md",
+		"/home/drabard/notes/fitness.md",
+		"/home/drabard/notes/exercises.md",
+		"/home/drabard/notes/tech/semantic_versioning.md",
+		"/home/drabard/Pobrane/chk",
+		"/home/drabard/Pobrane/start",
+		"/home/drabard/Pobrane/star",
+		"/home/drabard/code/round_table/client/build.sh",
+		"/home/drabard/code/round_table/client/src/network.cpp",
+		"/home/drabard/code/round_table/client/src/log.h",
+		"/home/drabard/code/round_table/client/src/rendering.cpp",
+		"/home/drabard/exercises/haskell/test.hs",
+		"/home/drabard/exercises/test.hs",
+		"/home/drabard/Pobrane/starsector/starfarer.api.jar",
+		"/home/drabard/code/round_table/server/src/main.cpp",
+		"/home/drabard/code/round_table/client/src/file.cpp",
+		"/home/drabard/code/round_table/client/src/file.h",
+		"/home/drabard/code/round_table/deps/jsmn-1.0.0/jsmn.c",
+		"/home/drabard/code/round_table/data/scenes/roadside_picnic.json",
+		"/home/drabard/code/round_table/deps/jsmn-1.0.0/jsmn.h",
+		"/home/drabard/code/round_table/client/src/network.h",
 		"/home/drabard/code/demo_framework/demo/src/demo.cpp",
 		"/home/drabard/code/demo_framework/demo/src/demo_imvis.h",
 		"/home/drabard/code/demo_framework/demo/src/demo_imvis.cpp",
 		"/home/drabard/code/demo_framework/demo/src/demo_imvis.",
 		"/home/drabard/code/round_table/server/build.sh",
-		"/home/drabard/code/round_table/client/build.sh",
 		"/home/drabard/code/round_table/round_table.sublime-project",
-		"/home/drabard/code/round_table/build.sh",
 		"/home/drabard/code/round_table/src/network.cpp",
 		"/home/drabard/code/round_table/src/network.h",
 		"/home/drabard/notes/rpg/curse_of_strahd_karty",
@@ -124,7 +183,6 @@
 		"/home/drabard/notes/majhima_nikaya_lectures/mn7_cloth_16_defilements.md",
 		"/home/drabard/notes/rpg/Linus Ramo",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn7.md",
-		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.cpp",
 		"/home/drabard/code/round_table/src/gui.cpp",
 		"/home/drabard/code/round_table/src/input.cpp",
 		"/home/drabard/code/round_table/src/rendering.h",
@@ -173,17 +231,13 @@
 		"/home/drabard/code/project_euler/17/17.py",
 		"/home/drabard/code/project_euler/problem_15.py",
 		"/home/drabard/knowledge/org",
-		"/home/drabard/notes/fitness.md",
 		"/home/drabard/projects/context_steering_demo/build.sh",
 		"/home/drabard/projects/context_steering_demo/context_steering_demo.sublime-project",
 		"/home/drabard/projects/context_steering_demo/src/math.c",
-		"/home/drabard/notes/project_ideas.md",
-		"/home/drabard/notes/projects.md",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn2.md",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn6.md",
 		"/home/drabard/Dokumenty/suttas",
 		"/home/drabard/notes/majhima_nikaya_lectures.md",
-		"/home/drabard/notes/meditation.md",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn118md",
 		"/home/drabard/notes/majhima_nikaya_lectures/mn10.md",
 		"/home/drabard/code/game00/notes",
@@ -194,34 +248,7 @@
 		"/home/drabard/code/game00/src/string_id.h",
 		"/home/drabard/code/game00/src/string_id.c",
 		"/home/drabard/code/game00/src/game_flow.inl",
-		"/home/drabard/code/game00/src/graphics_storage.h",
-		"/home/drabard/projects/stuff/content/posts/test-post.md",
-		"/home/drabard/code/game00/src/game_state.inl",
-		"/home/drabard/code/game00/src/hashmap.c",
-		"/home/drabard/code/game00/compile_template.sh",
-		"/home/drabard/code/game00/compile_all_templates.sh",
-		"/home/drabard/code/game00/src/resources.c",
-		"/home/drabard/code/game00/src/game.c",
-		"/home/drabard/code/game00/src/scene.h",
-		"/home/drabard/code/game00/src/entity.h",
-		"/home/drabard/code/game00/src/graphics_storage.c.tmpl",
-		"/home/drabard/code/game00/src/graphics.c",
-		"/home/drabard/code/game00/src/gpu.h",
-		"/home/drabard/code/game00/src/freelist.h",
-		"/home/drabard/code/game00/src/main.c",
-		"/home/drabard/code/game00/src/hashmap.h",
-		"/home/drabard/code/game00/src/freelist.c",
-		"/home/drabard/code/game00/ext/SDL2/include/SDL2/SDL_config.h",
-		"/home/drabard/code/game00/compile_templates.sh",
-		"/home/drabard/code/game00/count_lines.sh",
-		"/home/drabard/code/game00/src/untitled",
-		"/home/drabard/code/game00/src/entity.c",
-		"/home/drabard/code/game00/src/file.c",
-		"/home/drabard/code/game00/src/: The Five Hindrances",
-		"/home/drabard/code/codegen/cheetah_test.tmpl",
-		"/home/drabard/games/reigns",
-		"/home/drabard/code/codegen/example.c",
-		"/home/drabard/code/game00/game00.sublime-project"
+		"/home/drabard/code/game00/src/graphics_storage.h"
 	],
 	"find":
 	{
@@ -240,6 +267,35 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ImVec2",
+			"INVALID_node_id_t",
+			"node_id",
+			"node_it",
+			"node_id",
+			"selected_node_id_t",
+			"node_id",
+			"const",
+			"Selectable(",
+			"ImGuiTreeNodeFlags",
+			"Trees",
+			"ShowDemoWindow(",
+			"ShowDemoWindow",
+			"    //",
+			"Tree",
+			"window",
+			"scene_init",
+			"scene_add_sprite",
+			"\n'\\",
+			"'",
+			"\n'\\",
+			"  |",
+			"fprintf(stderr",
+			"printf",
+			"bardzo",
+			"Do",
+			"Chciałem",
+			"sn",
+			"print",
 			"c_addr",
 			"  freeaddrinfo(local_addresses);\n",
 			"inet_ntop",
@@ -311,6 +367,12 @@
 		"regex": false,
 		"replace_history":
 		[
+			"INVALID_NODE_ID",
+			"node_id_t",
+			"selected_node_id",
+			"",
+			"node_id_t",
+			"log_error(LOG_MAIN",
 			"addr",
 			"input",
 			"offset",
@@ -339,8 +401,95 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/drabard/notes/projects/current_project.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1138,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1136,
+								1136
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "client/src/scene.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 925,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/src/scene.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3835,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2205,
+								2205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 825.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -397,8 +546,68 @@
 		"selected_items":
 		[
 			[
+				"scene.cpp",
+				"client/src/scene.cpp"
+			],
+			[
+				"scene.h",
+				"client/src/scene.h"
+			],
+			[
+				"imgui.h",
+				"deps/imgui-1.65/imgui.h"
+			],
+			[
+				"imgui.cpp",
+				"deps/imgui-1.65/imgui.cpp"
+			],
+			[
 				"main.cpp",
-				"server/src/main.cpp"
+				"client/src/main.cpp"
+			],
+			[
+				"node.cpp",
+				"client/src/node.cpp"
+			],
+			[
+				"node.h",
+				"client/src/node.h"
+			],
+			[
+				"build.sh",
+				"build.sh"
+			],
+			[
+				"compile",
+				"scripts/compile_all_templates.sh"
+			],
+			[
+				"log.cpp",
+				"client/src/log.cpp"
+			],
+			[
+				"rendering.cpp",
+				"client/src/rendering.cpp"
+			],
+			[
+				"network.cpp",
+				"client/src/network.cpp"
+			],
+			[
+				"file.h",
+				"client/src/file.h"
+			],
+			[
+				"file.cpp",
+				"client/src/file.cpp"
+			],
+			[
+				"jsmn.h",
+				"deps/jsmn-1.0.0/jsmn.h"
+			],
+			[
+				"jsmn.c",
+				"deps/jsmn-1.0.0/jsmn.c"
 			],
 			[
 				"network.h",
@@ -407,18 +616,6 @@
 			[
 				"demo_imvis.cpp",
 				"~/code/demo_framework/demo/src/demo_imvis.cpp"
-			],
-			[
-				"imgui.h",
-				"deps/imgui-1.65/imgui.h"
-			],
-			[
-				"network.cpp",
-				"client/src/network.cpp"
-			],
-			[
-				"build.sh",
-				"server/build.sh"
 			],
 			[
 				"round",
@@ -437,16 +634,8 @@
 				"src/window.h"
 			],
 			[
-				"scene.h",
-				"src/scene.h"
-			],
-			[
 				"input.h",
 				"src/input.h"
-			],
-			[
-				"scene.cpp",
-				"src/scene.cpp"
 			],
 			[
 				"gui.cpp",
@@ -457,16 +646,8 @@
 				"src/gui.h"
 			],
 			[
-				"imgui.cpp",
-				"deps/imgui-1.65/imgui.cpp"
-			],
-			[
 				"input.cpp",
 				"src/input.cpp"
-			],
-			[
-				"rendering.cpp",
-				"src/rendering.cpp"
 			],
 			[
 				"rendering.h",
@@ -763,10 +944,6 @@
 			[
 				"freelist.c",
 				"src/freelist.c"
-			],
-			[
-				"compile",
-				"compile_all_templates.sh"
 			],
 			[
 				"compile_template",

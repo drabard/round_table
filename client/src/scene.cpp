@@ -52,10 +52,10 @@ error:
 struct node* scene_get_node_by_id(struct scene* scene, node_id_t id) {
   if (id == INVALID_NODE_ID)
     goto error;
-  if (id > scene->sprite_nodes.size())
+  if (GET_NODE_IDX(id) > scene->sprite_nodes.size())
     goto error;
 
-  return (struct node*)&scene->sprite_nodes[id];
+  return (struct node*)&scene->sprite_nodes[GET_NODE_IDX(id)];
 
 error:
   log_error(LOG_SCENE, "ERROR: Failed to get node by ID: %d\n", id);
@@ -71,7 +71,7 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
                            "../scenes/roadside_picnic.json");
     }
 
-    if (ImGui::Button("Add panda")) {
+    if (ImGui::Button("Add")) {
       node_id_t nid;
       struct sprite_node* sn = scene_add_sprite_node(scene, &nid);
       if (sn) {
@@ -88,7 +88,7 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
       struct sprite_node* sn = &scene->sprite_nodes[i];
       bool selected = sn->node.id == scene->gui.selected_node_id;
       if (ImGui::Selectable(sn->node.name.c_str(), selected)) {
-        scene->gui.selected_node_id = i;
+        scene->gui.selected_node_id = sn->node.id;
       }
       ImGui::PopID();
     }
@@ -99,11 +99,8 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
   {
     node_id_t sid = scene->gui.selected_node_id;
     if (sid != INVALID_NODE_ID) {
-      struct node* sn =
-          scene_get_node_by_id(scene, scene->gui.selected_node_id);
-      ImGui::Text("%s (%lu, %lu)", sn->name.c_str(), GET_NODE_TYPE(sn->id),
-                  GET_NODE_IDX(sn->id));
-      ImGui::InputFloat2("position", (float*)&sn->position);
+      struct node* sn = scene_get_node_by_id(scene, sid);
+      node_gui_properties(sn);
     }
   }
   ImGui::End();

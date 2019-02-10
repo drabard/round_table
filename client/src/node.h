@@ -9,7 +9,8 @@
 typedef uint64_t node_id_t;
 
 // maximum native node types: 2^16 (65536)
-// maximum nodes: 2^40 (enough)
+// maximum nodes: 2^40 - 1 (enough)
+// potentially 8 bits left for other stuff (32 bits for idx is enough)
 static const node_id_t INVALID_NODE_ID = 0xffffffffffffffff;
 static const uint64_t NODE_TYPE_MASK = 0xffffff0000000000;
 static const uint32_t NODE_TYPE_SHIFT = 40;
@@ -24,6 +25,7 @@ struct node {
   std::string name;
   v2 position;
   node_id_t id;
+  node_id_t next_free;
   struct node* children;
   struct node* next_sibling;
   enum node_type type;
@@ -33,7 +35,10 @@ node_id_t node_build_id(enum node_type type, uint64_t idx);
 
 void node_init(struct node* node, const char* name, v2 position,
                enum node_type type, node_id_t id);
-void node_process_gui(struct node* node);
+
+void node_gui_properties(struct node* node);
+
+bool node_checkrep(struct node* node);
 
 struct sprite_node {
   struct node node;
