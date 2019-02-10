@@ -14,6 +14,7 @@
 void scene_init(struct scene* scene, struct window* window) {
   *scene = (struct scene){};
   scene->gui.selected_node_id = INVALID_NODE_ID;
+  scene->sprite_nodes_freelist = INVALID_NODE_IDX;
   cam_2d_init(&scene->camera, (v2){.x = 0.0f, .y = 0.0f}, window->width,
               window->height, 0.0f, 10.0f);
 }
@@ -36,17 +37,41 @@ error:
 
 struct sprite_node* scene_add_sprite_node(struct scene* scene,
                                           node_id_t* out_id) {
+  struct sprite_node* res = 0;
+  node_idx_t new_idx = INVALID_NODE_IDX;
+
   if (out_id == 0)
     goto error;
 
-  scene->sprite_nodes.emplace_back();
-  *out_id = node_build_id(SPRITE_NODE, scene->sprite_nodes.size() - 1);
+  if (scene->sprite_nodes_freelist != INVALID_NODE_IDX) {
+    res = &scene->sprite_nodes[scene->sprite_nodes_freelist];
+    new_idx = scene->sprite_nodes_freelist;
+    scene->sprite_nodes_freelist = res->node.next_free;
+  } else {
+    scene->sprite_nodes.emplace_back();
+    res = &scene->sprite_nodes.back();
+    new_idx = scene->sprite_nodes.size() - 1;
+  }
 
-  return &scene->sprite_nodes.back();
+  *out_id = node_build_id(SPRITE_NODE, new_idx);
+
+  return res;
 
 error:
   log_error(LOG_SCENE, "ERROR: Failed to add a sprite node.\n");
   return 0;
+}
+
+void scene_remove_node(struct scene* scn, struct node* node) {
+  assert(node);
+  assert(node->type == SPRITE_NODE); // other types not implemented yet
+
+  node_idx_t idx = GET_NODE_IDX(node->id);
+
+  node_terminate(node);
+
+  node->next_free = scn->sprite_nodes_freelist;
+  scn->sprite_nodes_freelist = idx;
 }
 
 struct node* scene_get_node_by_id(struct scene* scene, node_id_t id) {
@@ -58,7 +83,7 @@ struct node* scene_get_node_by_id(struct scene* scene, node_id_t id) {
   return (struct node*)&scene->sprite_nodes[GET_NODE_IDX(id)];
 
 error:
-  log_error(LOG_SCENE, "ERROR: Failed to get node by ID: %d\n", id);
+  log_error(LOG_SCENE, "ERROR: Failed to get node by ID: %lu\n", id);
   return 0;
 }
 
@@ -81,15 +106,34 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
       }
     }
 
+    if (ImGui::Button("Remove")) {
+      if (scene->gui.selected_node_id != INVALID_NODE_ID) {
+        node_id_t id = scene->gui.selected_node_id;
+        struct node* n = scene_get_node_by_id(scene, id);
+        if (n) {
+          scene_remove_node(scene, n);
+          scene->gui.selected_node_id = INVALID_NODE_ID;
+        }
+      }
+    }
+
     ImGui::Separator();
 
     for (uint32_t i = 0; i < scene->sprite_nodes.size(); ++i) {
       ImGui::PushID(i);
+
       struct sprite_node* sn = &scene->sprite_nodes[i];
+
+      if (sn->node.id == INVALID_NODE_ID) {
+        ImGui::PopID();
+        continue;
+      }
+
       bool selected = sn->node.id == scene->gui.selected_node_id;
       if (ImGui::Selectable(sn->node.name.c_str(), selected)) {
         scene->gui.selected_node_id = sn->node.id;
       }
+
       ImGui::PopID();
     }
   }
@@ -101,6 +145,17 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
     if (sid != INVALID_NODE_ID) {
       struct node* sn = scene_get_node_by_id(scene, sid);
       node_gui_properties(sn);
+    }
+  }
+  ImGui::End();
+
+  ImGui::Begin("Scene debug");
+  {
+    ImGui::Text("sprite nodes: %lu", scene->sprite_nodes.size());
+    if (scene->sprite_nodes_freelist == INVALID_NODE_IDX) {
+      ImGui::Text("sprite nodes freelist empty");
+    } else {
+      ImGui::Text("sprite nodes freelist: %u", scene->sprite_nodes_freelist);
     }
   }
   ImGui::End();
@@ -126,6 +181,9 @@ void scene_draw(struct scene* scene, struct renderer* renderer) {
   cam_2d_view_projection(&scene->camera, &cam_view_proj);
   for (uint32_t ni = 0; ni < scene->sprite_nodes.size(); ++ni) {
     struct sprite_node* sn = &scene->sprite_nodes[ni];
+    if (sn->node.id == INVALID_NODE_ID)
+      continue;
+
     renderer_draw_sprite(renderer, &sn->sprite, sn->node.position,
                          &cam_view_proj);
   }
