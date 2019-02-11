@@ -12,27 +12,38 @@
 	"buffers":
 	[
 		{
-			"file": "/home/drabard/notes/projects/current_project.md",
+			"file": "/home/drabard/notes/games/sc2/tvp",
 			"settings":
 			{
-				"buffer_size": 1138,
+				"buffer_size": 0,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/src/scene.h",
+			"file": "/home/drabard/notes/games/sc2/tvt",
 			"settings":
 			{
-				"buffer_size": 925,
+				"buffer_size": 65,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "client/src/scene.cpp",
+			"file": "/home/drabard/notes/games/sc2/losses",
 			"settings":
 			{
-				"buffer_size": 3835,
+				"buffer_size": 0,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/drabard/notes/games/sc2/tvz",
+			"settings":
+			{
+				"buffer_size": 642,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -121,17 +132,20 @@
 	],
 	"file_history":
 	[
-		"/home/drabard/code/round_table/client/src/scene.cpp",
 		"/home/drabard/code/round_table/client/src/node.h",
-		"/home/drabard/code/round_table/client/src/main.cpp",
 		"/home/drabard/code/round_table/client/src/node.cpp",
+		"/home/drabard/notes/games/sc2/tvt",
+		"/home/drabard/notes/games/sc2/builds",
+		"/home/drabard/notes/projects/current_project.md",
+		"/home/drabard/code/round_table/client/src/scene.cpp",
 		"/home/drabard/code/round_table/client/src/scene.h",
+		"/home/drabard/code/round_table/scripts/compile_all_templates.sh",
+		"/home/drabard/code/round_table/build.sh",
+		"/home/drabard/notes/body/exercise_plan.md",
+		"/home/drabard/code/round_table/client/src/main.cpp",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.h",
 		"/home/drabard/code/round_table/deps/imgui-1.65/imgui.cpp",
-		"/home/drabard/code/round_table/build.sh",
-		"/home/drabard/code/round_table/scripts/compile_all_templates.sh",
 		"/home/drabard/scrap/cog/array.h",
-		"/home/drabard/notes/projects/current_project.md",
 		"/home/drabard/code/round_table/client/src/log.cpp",
 		"/home/drabard/notes/inbox.md",
 		"/home/drabard/notes/infosec_plan",
@@ -245,10 +259,7 @@
 		"/home/drabard/code/game00/src/resources_storage.c",
 		"/home/drabard/code/game00/src/graphics_storage.c",
 		"/home/drabard/code/game00/src/resources_storage.h",
-		"/home/drabard/code/game00/src/string_id.h",
-		"/home/drabard/code/game00/src/string_id.c",
-		"/home/drabard/code/game00/src/game_flow.inl",
-		"/home/drabard/code/game00/src/graphics_storage.h"
+		"/home/drabard/code/game00/src/string_id.h"
 	],
 	"find":
 	{
@@ -267,6 +278,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"add_sprite_node",
+			"get_node_by_id",
+			"gui.selected_node_id",
+			"get_node_by_id",
 			"ImVec2",
 			"INVALID_node_id_t",
 			"node_id",
@@ -401,44 +416,16 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/drabard/notes/projects/current_project.md",
+					"file": "/home/drabard/notes/games/sc2/tvp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1138,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1136,
-								1136
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "client/src/scene.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 925,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -451,7 +438,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -461,33 +448,87 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "client/src/scene.cpp",
+					"buffer": 1,
+					"file": "/home/drabard/notes/games/sc2/tvt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3835,
+						"buffer_size": 65,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2205,
-								2205
+								20,
+								20
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 825.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/drabard/notes/games/sc2/losses",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/drabard/notes/games/sc2/tvz",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 642,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								576,
+								576
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -546,6 +587,22 @@
 		"selected_items":
 		[
 			[
+				"build.sh",
+				"build.sh"
+			],
+			[
+				"compi",
+				"scripts/compile_all_templates.sh"
+			],
+			[
+				"node.cpp",
+				"client/src/node.cpp"
+			],
+			[
+				"node.h",
+				"client/src/node.h"
+			],
+			[
 				"scene.cpp",
 				"client/src/scene.cpp"
 			],
@@ -564,18 +621,6 @@
 			[
 				"main.cpp",
 				"client/src/main.cpp"
-			],
-			[
-				"node.cpp",
-				"client/src/node.cpp"
-			],
-			[
-				"node.h",
-				"client/src/node.h"
-			],
-			[
-				"build.sh",
-				"build.sh"
 			],
 			[
 				"compile",

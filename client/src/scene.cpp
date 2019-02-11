@@ -38,6 +38,7 @@ error:
 struct sprite_node* scene_add_sprite_node(struct scene* scene,
                                           node_id_t* out_id) {
   struct sprite_node* res = 0;
+  node_id_t new_id = INVALID_NODE_ID;
   node_idx_t new_idx = INVALID_NODE_IDX;
 
   if (out_id == 0)
@@ -53,7 +54,9 @@ struct sprite_node* scene_add_sprite_node(struct scene* scene,
     new_idx = scene->sprite_nodes.size() - 1;
   }
 
-  *out_id = node_build_id(SPRITE_NODE, new_idx);
+  new_id = node_build_id(SPRITE_NODE, new_idx);
+
+  *out_id = new_id;
 
   return res;
 
@@ -76,19 +79,18 @@ void scene_remove_node(struct scene* scn, struct node* node) {
 
 struct node* scene_get_node_by_id(struct scene* scene, node_id_t id) {
   if (id == INVALID_NODE_ID)
-    goto error;
-  if (GET_NODE_IDX(id) > scene->sprite_nodes.size())
-    goto error;
+    return 0;
+  if (GET_NODE_IDX(id) >= scene->sprite_nodes.size())
+    return 0;
 
   return (struct node*)&scene->sprite_nodes[GET_NODE_IDX(id)];
-
-error:
-  log_error(LOG_SCENE, "ERROR: Failed to get node by ID: %lu\n", id);
-  return 0;
 }
 
 void scene_process_gui(struct scene* scene, struct renderer* renderer,
                        struct window* window) {
+
+  struct node* selected_node =
+      scene_get_node_by_id(scene, scene->gui.selected_node_id);
   ImGui::Begin("Scene", 0, ImGuiWindowFlags_AlwaysAutoResize);
   {
     if (ImGui::Button("Load from file")) {
@@ -100,7 +102,8 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
       node_id_t nid;
       struct sprite_node* sn = scene_add_sprite_node(scene, &nid);
       if (sn) {
-        node_init(&sn->node, "Panda", (v2){}, SPRITE_NODE, nid);
+        node_init(&sn->node, "Panda", (v2){}, SPRITE_NODE, nid,
+                  scene->gui.selected_node_id);
         sprite_from_image(&sn->sprite, renderer, "../data/images/panda.png",
                           (v2){.x = 2.0f, .y = 2.0f});
       }
@@ -141,10 +144,8 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
 
   ImGui::Begin("Node properties");
   {
-    node_id_t sid = scene->gui.selected_node_id;
-    if (sid != INVALID_NODE_ID) {
-      struct node* sn = scene_get_node_by_id(scene, sid);
-      node_gui_properties(sn);
+    if (selected_node) {
+      node_gui_properties(selected_node);
     }
   }
   ImGui::End();
