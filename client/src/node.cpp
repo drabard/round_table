@@ -12,19 +12,42 @@ node_id_t node_build_id(enum node_type type, uint64_t idx) {
 }
 
 void node_init(struct node* node, const char* name, v2 position,
-               enum node_type type, node_id_t id, node_id_t parent_id) {
+               enum node_type type, node_id_t id) {
   node->name = name;
   node->id = id;
-  node->parent_id = parent_id;
+  node->parent_id = INVALID_NODE_ID;
   node->next_free = INVALID_NODE_IDX;
   node->position = position;
   node->type = type;
 }
 
+void node_change_parent(struct node* node, struct node* old_parent,
+                        struct node* new_parent) {
+  assert(node);
+  assert(old_parent == 0 ? node->parent_id == INVALID_NODE_ID
+                         : node->parent_id == old_parent->id);
+
+  if (old_parent) {
+    for (auto it = std::begin(old_parent->children);
+         it != std::end(old_parent->children); ++it) {
+      if (*it == node->id) {
+        old_parent->children.erase(it);
+        break;
+      }
+    }
+  }
+
+  if (new_parent) {
+    new_parent->children.push_back(node->id);
+    node->parent_id = new_parent->id;
+  } else {
+    node->parent_id = INVALID_NODE_ID;
+  }
+}
+
 void node_terminate(struct node* node) {
   *node = (struct node){};
   node->id = INVALID_NODE_ID;
-  node->parent_id = INVALID_NODE_ID;
   node->next_free = INVALID_NODE_IDX;
 }
 

@@ -65,16 +65,59 @@ error:
   return 0;
 }
 
+static std::vector<node_id_t> collect_branch(struct scene* scn, node* node)
+// Collects ids of nodes descending from node. Contains node's id as the first
+// element.
+// Nodes are sorted so that parent nodes are always earlier in the array than
+// child nodes.
+{
+  std::vector<node_id_t> result;
+  result.push_back(node->id);
+
+  std::vector<struct node*> buf;
+  buf.push_back(node);
+
+  while (!buf.empty()) {
+    struct node* cn = buf.back();
+    buf.pop_back();
+
+    std::vector<node_id_t>* children = &cn->children;
+    for (uint32_t i = 0; i < children->size(); ++i) {
+      node_id_t nid = (*children)[i];
+      result.push_back(nid);
+
+      struct node* n = scene_get_node_by_id(scn, nid);
+      buf.push_back(n);
+    }
+  }
+
+  return result;
+}
+
 void scene_remove_node(struct scene* scn, struct node* node) {
+  assert(scn);
   assert(node);
-  assert(node->type == SPRITE_NODE); // other types not implemented yet
 
-  node_idx_t idx = GET_NODE_IDX(node->id);
+  std::vector<node_id_t> to_remove = collect_branch(scn, node);
 
-  node_terminate(node);
+  while (!to_remove.empty()) {
+    node_id_t id = to_remove.back();
+    to_remove.pop_back();
 
-  node->next_free = scn->sprite_nodes_freelist;
-  scn->sprite_nodes_freelist = idx;
+    log_trace(LOG_SCENE, "Removing node (%lu, %lu)\n", GET_NODE_TYPE(id),
+              GET_NODE_IDX(id));
+
+    struct node* n = scene_get_node_by_id(scn, id);
+    struct node* p = scene_get_node_by_id(scn, n->parent_id);
+    node_change_parent(n, p, 0);
+
+    node_idx_t idx = GET_NODE_IDX(n->id);
+
+    node_terminate(n);
+
+    n->next_free = scn->sprite_nodes_freelist;
+    scn->sprite_nodes_freelist = idx;
+  }
 }
 
 struct node* scene_get_node_by_id(struct scene* scene, node_id_t id) {
@@ -86,11 +129,48 @@ struct node* scene_get_node_by_id(struct scene* scene, node_id_t id) {
   return (struct node*)&scene->sprite_nodes[GET_NODE_IDX(id)];
 }
 
+static void gui_make_tree(struct scene* scene, struct node* node,
+                          uint32_t* rec_counter) {
+  ++(*rec_counter);
+  static const uint32_t MAX_RECURSION_DEPTH = 10;
+  if (*rec_counter > MAX_RECURSION_DEPTH) {
+    log_error(LOG_SCENE,
+              "ERROR: Maximum depth of scene recursion reached for node %s.\n",
+              node->name.c_str());
+    return;
+  }
+
+  bool selected = node->id == scene->gui.selected_node_id;
+  bool open = ImGui::TreeNodeEx(
+      node->name.c_str(), selected ? ImGuiTreeNodeFlags_Selected
+                                   : 0 | ImGuiTreeNodeFlags_OpenOnDoubleClick);
+
+  if (ImGui::IsItemClicked()) {
+    scene->gui.selected_node_id = node->id;
+  }
+
+  if (open) {
+    const std::vector<node_id_t>* children = &node->children;
+    for (size_t i = 0; i < children->size(); ++i) {
+      struct node* n = scene_get_node_by_id(scene, (*children)[i]);
+      if (!n) {
+        log_error(LOG_SCENE,
+                  "ERROR: Child %lu of node %s can't be found in the scene.\n",
+                  i, node->name.c_str());
+        continue;
+      }
+
+      gui_make_tree(scene, n, rec_counter);
+    }
+
+    ImGui::TreePop();
+  }
+
+  --(*rec_counter);
+}
+
 void scene_process_gui(struct scene* scene, struct renderer* renderer,
                        struct window* window) {
-
-  struct node* selected_node =
-      scene_get_node_by_id(scene, scene->gui.selected_node_id);
   ImGui::Begin("Scene", 0, ImGuiWindowFlags_AlwaysAutoResize);
   {
     if (ImGui::Button("Load from file")) {
@@ -101,9 +181,13 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
     if (ImGui::Button("Add")) {
       node_id_t nid;
       struct sprite_node* sn = scene_add_sprite_node(scene, &nid);
+
+      struct node* selected_node =
+          scene_get_node_by_id(scene, scene->gui.selected_node_id);
+
       if (sn) {
-        node_init(&sn->node, "Panda", (v2){}, SPRITE_NODE, nid,
-                  scene->gui.selected_node_id);
+        node_init(&sn->node, "Panda", (v2){}, SPRITE_NODE, nid);
+        node_change_parent(&sn->node, 0, selected_node);
         sprite_from_image(&sn->sprite, renderer, "../data/images/panda.png",
                           (v2){.x = 2.0f, .y = 2.0f});
       }
@@ -132,10 +216,16 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
         continue;
       }
 
-      bool selected = sn->node.id == scene->gui.selected_node_id;
+      if (sn->node.parent_id == INVALID_NODE_ID) {
+        uint32_t rec_counter = 0;
+        gui_make_tree(scene, &sn->node, &rec_counter);
+      }
+
+#if 0
       if (ImGui::Selectable(sn->node.name.c_str(), selected)) {
         scene->gui.selected_node_id = sn->node.id;
       }
+#endif
 
       ImGui::PopID();
     }
@@ -144,6 +234,9 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
 
   ImGui::Begin("Node properties");
   {
+    struct node* selected_node =
+        scene_get_node_by_id(scene, scene->gui.selected_node_id);
+
     if (selected_node) {
       node_gui_properties(selected_node);
     }
@@ -152,11 +245,32 @@ void scene_process_gui(struct scene* scene, struct renderer* renderer,
 
   ImGui::Begin("Scene debug");
   {
-    ImGui::Text("sprite nodes: %lu", scene->sprite_nodes.size());
-    if (scene->sprite_nodes_freelist == INVALID_NODE_IDX) {
-      ImGui::Text("sprite nodes freelist empty");
-    } else {
-      ImGui::Text("sprite nodes freelist: %u", scene->sprite_nodes_freelist);
+    ImGui::Text("sprite nodes allocated: %lu", scene->sprite_nodes.size());
+    if (ImGui::TreeNode("Nodes freelist")) {
+      node_idx_t idx = scene->sprite_nodes_freelist;
+      while (idx != INVALID_NODE_IDX) {
+        ImGui::Text("%u", idx);
+        idx = scene->sprite_nodes[idx].node.next_free;
+      }
+      ImGui::TreePop();
+    }
+
+    if (ImGui::Button("Dump to log")) {
+      for (uint32_t i = 0; i < scene->sprite_nodes.size(); ++i) {
+        struct node* n = (struct node*)&scene->sprite_nodes[i];
+        log_trace(LOG_SCENE, "\n");
+        log_trace(LOG_SCENE, "Node %s\n", n->name.c_str());
+        log_trace(LOG_SCENE, "(%lu, %lu), parent (%lu, %lu)\n",
+                  GET_NODE_TYPE(n->id), GET_NODE_IDX(n->id),
+                  GET_NODE_TYPE(n->parent_id), GET_NODE_IDX(n->parent_id));
+        log_trace(LOG_SCENE, "Children: ");
+        for (uint32_t ci = 0; ci < n->children.size(); ++ci) {
+          node_id_t nid = n->children[ci];
+          log_trace(LOG_SCENE, "(%lu, %lu)", GET_NODE_TYPE(nid),
+                    GET_NODE_IDX(nid));
+          log_trace(LOG_SCENE, ci == n->children.size() - 1 ? "\n" : ", ");
+        }
+      }
     }
   }
   ImGui::End();

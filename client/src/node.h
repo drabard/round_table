@@ -39,8 +39,10 @@ struct node {
 node_id_t node_build_id(enum node_type type, uint64_t idx);
 
 void node_init(struct node* node, const char* name, v2 position,
-               enum node_type type, node_id_t id, node_id_t parent_id);
+               enum node_type type, node_id_t id);
 void node_terminate(struct node* node);
+void node_change_parent(struct node* node, struct node* old_parent,
+                        struct node* new_parent);
 
 void node_gui_properties(struct node* node);
 
